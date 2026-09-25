@@ -31,7 +31,7 @@ nav:
 theme:
   name: material                         # Tema Material para un diseño moderno
   # Indica la ruta relativa al archivo dentro de docs/
-  logo: images/logo_doc_megas.png
+  logo: images/logo_doc_megas.PNG
   # (Opcional) Si no quieres que junto al logo aparezca el nombre del sitio:
   logo_text: true
   highlightjs: true
@@ -44,7 +44,7 @@ theme:
     accent: "light-blue"                 # Color de acento personalizado
   # icon:
   #   logo: "LogoQCS"  # especifica la ruta del nuevo ícono aquí
-  favicon: images/logo_doc_megas.png               # Imagen personalizada para el favicon del sitio, que se muestra en la pestaña del navegador
+  favicon: images/logo_doc_megas.PNG               # Imagen personalizada para el favicon del sitio, que se muestra en la pestaña del navegador
 # Configuración de plugins de MkDocs
 plugins:
   - mkdocstrings
