@@ -1,0 +1,1941 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02.Fuentes/">
+      
+      
+        <link rel="next" href="../../03.ETLs/01.Esquema/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo_doc_megas.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2.3 Actualización de Fuentes en el SharePoint - Modelo Analítico Seguimiento Megas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="23abf7" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#actualizacion-de-fuentes-en-el-sharepoint" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-header__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelo Analítico Seguimiento Megas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.3 Actualización de Fuentes en el SharePoint
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-nav__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    Modelo Analítico Seguimiento Megas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.Instalacion_Requerimientos/01.Instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Instalación y Requerimientos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configuración SharePoint
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Configuración SharePoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Estructura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Configuración técnica de SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Fuentes y Responsables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Actualización de Fuentes en el SharePoint
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Actualización de Fuentes en el SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-regla-general-para-fuentes-manuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Regla general para fuentes manuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fuentes-por-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fuentes por API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fuentes-world-office" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Fuentes World Office
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Fuentes World Office">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-costo-de-ventas-preliminar-y-costo-de-ventas-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Costo de ventas preliminar y costo de ventas final
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-estado-de-resultados-balance-general-y-centro-de-costos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Estado de resultados, balance general y centro de costos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-compras-por-producto-y-cartera-por-edades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Compras por producto y cartera por edades
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-otras-fuentes-manuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Otras fuentes manuales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Otras fuentes manuales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-7_4_costo_embarque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 7_4_costo_embarque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-7_5_costo_transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 7_5_costo_transporte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-8_1_conversion_auto_glp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 8_1_conversion_auto_glp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-8_2_rutas_vehiculos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 8_2_rutas_vehiculos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-8_3_facturacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 8_3_facturacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-8_4_rrhh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 8_4_rrhh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-8_5_accidentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 8_5_accidentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-8_6_simulacros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 8_6_simulacros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-8_7_saldos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 8_7_saldos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Código Fuente (ETLs)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Código Fuente (ETLs)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/01.Esquema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Estructura y Esquema de ejecución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/05.Pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Pipeline (Orquestador Principal)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/02.apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/02.Capa_bronce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Capa Bronce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/03.Capa_plata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Capa Plata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/04.Capa_oro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Capa Oro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Tablero Power BI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Tablero Power BI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.MR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Modelo Relacional y Medidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.Inicio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/01.Vision_General/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Visión General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/02.Vision_Tactica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Visión Táctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/03.Seguimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Seguimiento de Proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-regla-general-para-fuentes-manuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Regla general para fuentes manuales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fuentes-por-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fuentes por API
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-fuentes-world-office" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Fuentes World Office
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Fuentes World Office">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-costo-de-ventas-preliminar-y-costo-de-ventas-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Costo de ventas preliminar y costo de ventas final
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-estado-de-resultados-balance-general-y-centro-de-costos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Estado de resultados, balance general y centro de costos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-compras-por-producto-y-cartera-por-edades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Compras por producto y cartera por edades
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-otras-fuentes-manuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Otras fuentes manuales
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Otras fuentes manuales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-7_4_costo_embarque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 7_4_costo_embarque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-7_5_costo_transporte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 7_5_costo_transporte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-8_1_conversion_auto_glp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 8_1_conversion_auto_glp
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-8_2_rutas_vehiculos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 8_2_rutas_vehiculos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-8_3_facturacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 8_3_facturacion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-8_4_rrhh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 8_4_rrhh
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-8_5_accidentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 8_5_accidentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-8_6_simulacros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 8_6_simulacros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#59-8_7_saldos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.9 8_7_saldos
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="actualizacion-de-fuentes-en-el-sharepoint">Actualización de Fuentes en el SharePoint<a class="headerlink" href="#actualizacion-de-fuentes-en-el-sharepoint" title="Permanent link">&para;</a></h1>
+<p>Esta página describe cómo deben actualizarse las fuentes de entrada del modelo analítico. La usan los responsables definidos en <code>07_config/sources.yaml</code> (campo <code>owner</code>) y quienes administran la ejecución del pipeline. La regla por defecto es simple: una fuente manual debe conservar exactamente la plantilla de referencia en <code>00_sources/samples/</code>, en la misma ruta equivalente de <code>01_bronze/data/</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Una actualización puede afectar todo el tablero</p>
+<p>La capa Bronze detiene el pipeline si falla una fuente. Silver registra el error y continúa con las demás fuentes, pero Gold solo se ejecuta si Silver alcanza al menos el 80 % de finalización. Antes de reemplazar un archivo en SharePoint, valide el nombre, la hoja, los encabezados y los tipos de dato.</p>
+</div>
+<h2 id="1-introduccion">1. Introducción<a class="headerlink" href="#1-introduccion" title="Permanent link">&para;</a></h2>
+<p>SharePoint es el punto de intercambio de los archivos manuales. El pipeline descarga los archivos Bronze, calcula un hash para detectar cambios y los convierte en snapshots Parquet; Bronze no transforma los datos. Después, Silver renombra y tipa las columnas según <code>07_config/mappings.yaml</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Sistema</th>
+<th style="text-align: right;">Frecuencia</th>
+<th>Responsable en <code>sources.yaml</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>2_2_compras_por_producto</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>5_4_costo_ventas_preliminar</code> a <code>5_5_costo_ventas</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>5_6_estado_resultados</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>5_7_balance_general</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>5_8_centro_costos</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>6_1_cartera_producto</code></td>
+<td>World Office</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>7_4_costo_embarque</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>giovanny calderon</td>
+</tr>
+<tr>
+<td><code>7_5_costo_transporte</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>giovanny calderon</td>
+</tr>
+<tr>
+<td><code>8_1_conversion_auto_glp</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>gabriela garcia</td>
+</tr>
+<tr>
+<td><code>8_2_rutas_vehiculos</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>laura hernandez</td>
+</tr>
+<tr>
+<td><code>8_3_facturacion</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>rocio moreno</td>
+</tr>
+<tr>
+<td><code>8_4_rrhh</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>nasly martinez</td>
+</tr>
+<tr>
+<td><code>8_5_accidentes</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>nasly martinez</td>
+</tr>
+<tr>
+<td><code>8_6_simulacros</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Mensual</td>
+<td>nasly martinez</td>
+</tr>
+<tr>
+<td><code>8_7_saldos</code></td>
+<td>Manual</td>
+<td style="text-align: right;">Diaria</td>
+<td>rocio moreno</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-regla-general-para-fuentes-manuales">2. Regla general para fuentes manuales<a class="headerlink" href="#2-regla-general-para-fuentes-manuales" title="Permanent link">&para;</a></h2>
+<p>Salvo las excepciones descritas en las secciones siguientes, toda actualización debe seguir la plantilla ubicada en <code>00_sources/samples/&lt;ruta equivalente&gt;</code>. En la práctica significa:</p>
+<ol>
+<li>Mantener el mismo nombre o el mismo patrón de nombre que indica <code>sources.yaml</code>. Por ejemplo, <code>**/*.xlsx</code> permite varios archivos, mientras que <code>01.Formato mensual Conversión Auto GLP.xlsx</code> exige ese nombre exacto.</li>
+<li>Mantener el mismo tipo de archivo, la misma hoja y la misma fila de encabezados. <code>skip_rows</code> indica las filas que el lector omite antes de interpretar los nombres de columnas.</li>
+<li>Mantener los nombres de las columnas tal como aparecen en la plantilla. <code>mappings.yaml</code> relaciona cada <code>source_name</code> con un <code>target_name</code> de Silver.</li>
+<li>Mantener el tipo esperado: <code>string</code>, <code>integer</code>, <code>float</code>, <code>date</code> o <code>datetime</code>. Las columnas <code>required: true</code> no deben faltar ni quedar vacías en los registros válidos; las columnas marcadas como <code>primary_key</code> deben identificar registros sin duplicados.</li>
+<li>Agregar los nuevos registros sin borrar el histórico, salvo que el procedimiento de la fuente indique que cada archivo representa un corte mensual independiente.</li>
+</ol>
+<p><code>01_bronze/scripts/get_data.py</code> busca los archivos con el <code>pattern</code>, lee Excel/CSV usando <code>sheet</code>, <code>skip_rows</code>, <code>encoding</code> y <code>separator</code>, y guarda una copia Parquet. No corrige encabezados, fechas ni números. Si el patrón no encuentra el archivo, la hoja no existe o una columna no coincide, puede ocurrir una falla de ingesta; si la lectura pasa pero faltan columnas requeridas o un tipo no puede convertirse, fallará el contrato de Silver.</p>
+<div class="admonition note">
+<p class="admonition-title">Antes de cargar</p>
+<p>Compare el archivo nuevo con la muestra y con el último archivo de <code>01_bronze/data/</code>. No cambie encabezados para hacerlos "más legibles": el nombre legible para Silver se define en <code>target_name</code>, no en el archivo de entrada.</p>
+</div>
+<h2 id="3-fuentes-por-api">3. Fuentes por API<a class="headerlink" href="#3-fuentes-por-api" title="Permanent link">&para;</a></h2>
+<p>Las siguientes fuentes tienen <code>status: on</code> y <code>type: api</code> en <code>sources.yaml</code>. Se actualizan automáticamente mediante los scripts de <code>00_sources/scripts/</code>; no requieren cargue manual en SharePoint:</p>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Script</th>
+<th>Sistema / responsable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1_3_cilindros_vigigas</code></td>
+<td><code>01_vigigas/vigigas_api_client.py</code></td>
+<td>vigigas / felipe bedoya</td>
+</tr>
+<tr>
+<td><code>4_1_distribucion_trazabilidad_cilindros</code></td>
+<td><code>01_vigigas/vigigas_api_client.py</code></td>
+<td>vigigas / felipe bedoya</td>
+</tr>
+<tr>
+<td><code>4_2_invoices_vigigas</code></td>
+<td><code>01_vigigas/vigigas_api_client.py</code></td>
+<td>vigigas / felipe bedoya</td>
+</tr>
+<tr>
+<td><code>7_1_mb_tx_propane</code></td>
+<td><code>03_mb_tx_propane/mb_tx_propane_api.py</code></td>
+<td>EIA, agencia del gobierno de Estados Unidos / responsable interno de la cuenta</td>
+</tr>
+<tr>
+<td><code>7_3_trm</code></td>
+<td><code>04_trm/trm_api.py</code></td>
+<td>Datos Abiertos Colombia / responsable interno que gestione la fuente</td>
+</tr>
+</tbody>
+</table>
+<p>Ante una falla:</p>
+<ol>
+<li>Revise el log correspondiente en <code>09_logs/00_sources/</code>, especialmente la carpeta del script (<code>vigigas</code>, <code>03_mb_tx_propane</code> o <code>04_trm</code>). Revise también el log de <code>09_logs/pipeline/</code> para ver si el orquestador continuó.</li>
+<li>Una falla transitoria suele ser un timeout, una respuesta temporalmente no disponible o un error de red. Reintente en otra ejecución y confirme si se generó el Parquet.</li>
+<li>Un error repetido de autenticación, token, <code>401/403</code>, endpoint no encontrado o respuesta inválida indica credenciales vencidas, permisos o API caída. No cargue un archivo manual como sustituto sin validarlo con el owner.</li>
+<li>Para Vigigas contacte a felipe bedoya; para Propane, al responsable interno que administra la cuenta de EIA; para TRM, al responsable interno de Datos Abiertos Colombia. El owner externo indicado en <code>sources.yaml</code> no reemplaza el contacto operativo interno.</li>
+</ol>
+<h2 id="4-fuentes-world-office">4. Fuentes World Office<a class="headerlink" href="#4-fuentes-world-office" title="Permanent link">&para;</a></h2>
+<h3 id="41-costo-de-ventas-preliminar-y-costo-de-ventas-final">4.1 Costo de ventas preliminar y costo de ventas final<a class="headerlink" href="#41-costo-de-ventas-preliminar-y-costo-de-ventas-final" title="Permanent link">&para;</a></h3>
+<p><code>5_4_costo_ventas_preliminar</code> recibe el export original de World Office en <code>01_bronze/data/05_ventas/04_costo_ventas_preliminar/entrada/</code>, con patrón <code>**/*.xlsx</code>, hoja <code>ExportarAExcel</code> y <code>skip_rows: 3</code>. La muestra tiene un encabezado de reporte en las primeras filas; el script <code>01_bronze/scripts/01_costo_ventas_bronce.py</code> lee todos los Excel de esa carpeta.</p>
+<p>El preprocesamiento hace lo siguiente: </p>
+<ul>
+<li>Renombra y tipa las columnas preliminares</li>
+<li>Elimina vendedor y documentos nulos</li>
+<li>Marca duplicados</li>
+<li>Identifica la línea de negocio</li>
+<li>Calcula <code>cantidad_kg</code>, incluyendo reglas para códigos <code>lbs/kg</code>, litros EDS y documentos <code>NCCL</code>/<code>NDCL</code></li>
+<li>Cruza tarifas y fechas de EDS</li>
+<li>Valida contra las tablas paramétricas locales</li>
+</ul>
+<p>El resultado queda en <code>04_costo_ventas_preliminar/por_validar/</code> para revisión contable (Rocío Moreno).</p>
+<p>Después de validar el archivo, copie el resultado final a la carpeta que consume <code>5_5_costo_ventas</code>: <code>01_bronze/data/05_ventas/05_costo_ventas/</code>. En la convención remota documentada, la ruta es <code>01_bronze/data/05_ventas/05_costo_ventas/</code> dentro de la raíz del entorno de SharePoint (<code>test</code> o <code>prod</code>). No deje el archivo aprobado únicamente en <code>por_validar</code>: Silver no procesa esa carpeta.</p>
+<p>El archivo final usa la hoja <code>ExportarAExcel</code>, <code>skip_rows: 0</code> y debe contener, como mínimo, las columnas requeridas de <code>mappings.yaml</code>: </p>
+<ul>
+<li><code>documento_contable</code> (string)</li>
+<li><code>fecha</code> (date)</li>
+<li><code>nombre_cliente</code> (string)</li>
+<li><code>codigo_inventario</code> (string)</li>
+<li><code>unidades</code></li>
+<li><code>valor_unitario_venta</code></li>
+<li><code>valor_venta_cop</code></li>
+<li><code>valor_costo_unitario</code></li>
+<li><code>total_costo_cop</code></li>
+<li><code>margen</code></li>
+<li><code>porcentaje_margen</code> (float)</li>
+<li><code>es_duplicado</code></li>
+<li><code>registro_valido</code></li>
+<li><code>cantidad_kg</code></li>
+<li><code>linea_negocio</code></li>
+<li><code>fuente_bronce</code> (string)</li>
+</ul>
+<p>El patrón de nombre mensual observado es <code>MM-YY COSTO DE VENTAS.xlsx</code>; manténgalo para que la trazabilidad sea clara.</p>
+<h3 id="42-estado-de-resultados-balance-general-y-centro-de-costos">4.2 Estado de resultados, balance general y centro de costos<a class="headerlink" href="#42-estado-de-resultados-balance-general-y-centro-de-costos" title="Permanent link">&para;</a></h3>
+<p>Los tres reportes se guardan en sus carpetas equivalentes bajo <code>01_Bronce/data/05_ventas/</code>, usan <code>**/*.xlsx</code>, hoja <code>ExportarAExcel</code> y conservan además una hoja visual <code>Tabla</code>. Los nombres observados son <code>MM-YY ESTADO RESULTADOS.xlsx</code>, <code>MM-YY BALANCE GENERAL.xlsx</code> y <code>MM-YY CENTRO DE COSTO AUTO GLP.xlsx</code>. El prefijo <code>MM-YY</code> se usa en Silver para calcular <code>fecha_mes</code>, por lo que no debe omitirse ni cambiarse.</p>
+<p>Estos reportes pueden recibir registros manuales para conservar la estructura visual del reporte, no solo cambios de valores. La fila nueva debe respetar todas las columnas requeridas y el tipo definido en <code>mappings.yaml</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Fuente</th>
+<th>Columnas requeridas que deben conservarse</th>
+<th>Paramétrica relacionada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5_6_estado_resultados</code></td>
+<td><code>Texto120</code>, <code>NombreCuentaNivel1</code>, <code>Texto122</code>, <code>NombreCuentaNivel2</code>, <code>Texto123</code>, <code>NombreCuentaNivel3</code>, <code>Texto132</code>, <code>NombreCuentaNivel4</code>, <code>TotalCodNivel4</code>, <code>Texto176</code>, <code>NombreCuentaNivel5</code>, <code>TotalCodNivel5</code>, <code>Mar</code>, <code>Cuenta Tercero</code>, <code>Expr1014</code></td>
+<td><code>0_4_dim_agrupaciones_estado_resultados</code></td>
+</tr>
+<tr>
+<td><code>5_7_balance_general</code></td>
+<td><code>Texto120</code>, <code>NombreCuentaNivel1T</code>, <code>Texto122</code>, <code>NombreCuentaNivel2T</code>, <code>Texto123</code>, <code>NombreCuentaNivel3T</code>, <code>Texto132</code>, <code>NombreCuentaNivel4T</code>, <code>CodCuentaNivel5</code>, <code>NombreCuentaNivel5T</code>, <code>TotalCodNivel5</code>, <code>TxtCta_Formato</code>, <code>Cuenta Tercero</code>, <code>Mar</code>, <code>PASYPAT</code></td>
+<td>No aplica directamente</td>
+</tr>
+<tr>
+<td><code>5_8_centro_costos</code></td>
+<td><code>CodCCostos1</code>, <code>CCostos1</code>, <code>NombreCuentaNivel1</code>, <code>Texto232</code>, <code>NombreCuentaNivel2</code>, <code>Texto231</code>, <code>NombreCuentaNivel3</code>, <code>Texto230</code>, <code>Mar4</code>, <code>NombreCuentaNivel4</code>, <code>Código</code>, <code>Cuenta Tercero</code>, <code>Mar</code>, <code>PASYPAT</code></td>
+<td><code>0_5_dim_centro_costo_auto_glp</code></td>
+</tr>
+</tbody>
+</table>
+<p>En la tabla anterior, los campos de cuenta, texto, código y tercero son <code>string</code>; los campos <code>TotalCodNivel4</code>, <code>TotalCodNivel5</code>, <code>Mar</code>, <code>Expr1014</code>, <code>Mar4</code> y <code>Mar</code>/<code>total</code> son <code>float</code>, según la sección de cada fuente en <code>mappings.yaml</code>.</p>
+<h4 id="codigos-con-extra-para-estado-resultados">Códigos con "Extra" para Estado Resultados<a class="headerlink" href="#codigos-con-extra-para-estado-resultados" title="Permanent link">&para;</a></h4>
+<p>Los marcadores disponibles en <code>dim_agrupaciones_estado_resultados.xlsx</code> (columna <code>nivel_5</code>) son los que se deben usar cuando se agrega una fila calculada o visual en <code>5_6_estado_resultados</code>. El estándar es <code>EXTRA_&lt;id_registro&gt;</code>, donde <code>id_registro</code> es el número de fila en la paramétrica:</p>
+<table>
+<thead>
+<tr>
+<th>Código <code>nivel_5</code></th>
+<th>Fila visual que representa en el reporte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>4325951</code></td>
+<td>Ingresos → Venta de Servicios → Diferencia en precio facturado GLP TAME</td>
+</tr>
+<tr>
+<td><code>EXTRA_119</code></td>
+<td>Bonos por conversión talleres aliados</td>
+</tr>
+<tr>
+<td><code>EXTRA_189</code></td>
+<td>Fila calculada de la sección de gastos administrativos</td>
+</tr>
+<tr>
+<td><code>EXTRA_227</code></td>
+<td>Utilidad antes de impuestos</td>
+</tr>
+<tr>
+<td><code>EXTRA_229</code></td>
+<td>U. neta para renta antes de impuestos</td>
+</tr>
+<tr>
+<td><code>EXTRA_231</code></td>
+<td>U. neta después de impuestos</td>
+</tr>
+<tr>
+<td><code>EXTRA_232</code></td>
+<td>Punto de equilibrio</td>
+</tr>
+</tbody>
+</table>
+<h4 id="codigos-con-extra-para-analisis-auto-glp">Códigos con "Extra" para Análisis Auto GLP<a class="headerlink" href="#codigos-con-extra-para-analisis-auto-glp" title="Permanent link">&para;</a></h4>
+<p>Los marcadores disponibles en <code>dim_agrupaciones_analisis_autoglp.xlsx</code> (columna <code>nivel_4</code>) son los que se deben usar cuando se agrega una fila calculada en <code>5_8_centro_costos</code>. Siguen el mismo estándar <code>EXTRA_&lt;id_registro&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Código <code>nivel_4</code></th>
+<th>Fila visual que representa en el reporte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EXTRA_16</code></td>
+<td>Costo producto GLP</td>
+</tr>
+<tr>
+<td><code>EXTRA_17</code></td>
+<td>UTILIDAD BRUTA</td>
+</tr>
+<tr>
+<td><code>EXTRA_18</code></td>
+<td>Margen bruto</td>
+</tr>
+<tr>
+<td><code>EXTRA_116</code></td>
+<td>Bonos por conversión talleres aliados</td>
+</tr>
+<tr>
+<td><code>EXTRA_117</code></td>
+<td>UTILIDAD OPERACIONAL</td>
+</tr>
+<tr>
+<td><code>EXTRA_118</code></td>
+<td>Margen Operacional</td>
+</tr>
+<tr>
+<td><code>EXTRA_119</code></td>
+<td>Asignación Comercial AutoGLP</td>
+</tr>
+<tr>
+<td><code>EXTRA_120</code></td>
+<td>Asignación personal administrativo transversal</td>
+</tr>
+<tr>
+<td><code>EXTRA_121</code></td>
+<td>Asignación gastos financieros corporativos</td>
+</tr>
+<tr>
+<td><code>EXTRA_122</code></td>
+<td>TOTAL COSTOS Y GASTOS INDIRECTOS ASIGNADOS</td>
+</tr>
+<tr>
+<td><code>EXTRA_123</code></td>
+<td>RESULTADO NETO DEL EJERCICIO</td>
+</tr>
+<tr>
+<td><code>EXTRA_124</code></td>
+<td>Margen Neto</td>
+</tr>
+</tbody>
+</table>
+<h4 id="como-agregar-un-nuevo-registro-en-los-archivos-world-office">Cómo agregar un nuevo registro en los archivos World Office<a class="headerlink" href="#como-agregar-un-nuevo-registro-en-los-archivos-world-office" title="Permanent link">&para;</a></h4>
+<p>Las instrucciones siguientes aplican a cualquier fila que se agregue manualmente en la hoja <code>ExportarAExcel</code> de <code>5_6_estado_resultados</code>, <code>5_7_balance_general</code> o <code>5_8_centro_costos</code>.</p>
+<p><strong>Paso 1 — Determine el tipo de fila</strong></p>
+<ul>
+<li><strong>Fila con cuenta contable real</strong>: tiene un código numérico en <code>nivel_5</code> / <code>CodCuentaNivel5</code> / <code>Código</code> proveniente de World Office.</li>
+<li><strong>Fila calculada o visual</strong>: no tiene cuenta contable. Use el código <code>EXTRA_&lt;id_registro&gt;</code> de la paramétrica correspondiente (tablas anteriores). Su valor numérico (<code>Mar</code>, <code>TotalCodNivel5</code>, etc.) puede quedar en cero; el tablero lo reemplaza con el resultado calculado.</li>
+</ul>
+<p><strong>Paso 2 — Verifique que el código exista en la paramétrica</strong></p>
+<p>Antes de escribir la fila, confirme que el código está en la paramétrica correspondiente. Si no existe, el registro no se cruzará en Silver/Gold y quedará sin clasificar.</p>
+<table>
+<thead>
+<tr>
+<th>Reporte</th>
+<th>Columna del código en el Excel</th>
+<th>Paramétrica</th>
+<th>Columna de la paramétrica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>5_6_estado_resultados</code></td>
+<td><code>Texto176</code> / <code>NombreCuentaNivel5</code> / <code>TotalCodNivel5</code></td>
+<td><code>dim_agrupaciones_estado_resultados.xlsx</code></td>
+<td><code>nivel_5</code></td>
+</tr>
+<tr>
+<td><code>5_7_balance_general</code></td>
+<td><code>CodCuentaNivel5</code> / <code>NombreCuentaNivel5T</code> / <code>TotalCodNivel5</code></td>
+<td>No tiene paramétrica directa — use solo cuentas reales</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>5_8_centro_costos</code></td>
+<td><code>Código</code> / <code>NombreCuentaNivel4</code></td>
+<td><code>dim_centro_costo_auto_glp.xlsx</code> / <code>dim_agrupaciones_analisis_autoglp.xlsx</code></td>
+<td><code>cod_centro_costo</code> / <code>nivel_4</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Paso 3 — Complete todas las columnas requeridas</strong></p>
+<ul>
+<li>Códigos, nombres de cuenta, tercero y etiquetas: <code>string</code> (texto exacto, sin fórmulas).</li>
+<li>Valores contables (<code>Mar</code>, <code>TotalCodNivel5</code>, <code>Expr1014</code>, <code>PASYPAT</code>, <code>Mar4</code>): <code>float</code>.</li>
+<li>No deje vacíos los campos de jerarquía <code>Texto120</code>, <code>Texto122</code>, <code>Texto123</code>, <code>Texto132</code> (estado resultados / balance) ni <code>CodCCostos1</code> (centro de costos): Silver los necesita para construir los niveles.</li>
+</ul>
+<p><strong>Paso 4 — Valide antes de guardar y subir</strong></p>
+<ol>
+<li>Nombre del archivo: patrón <code>MM-YY &lt;NOMBRE&gt;.xlsx</code> con el mes y año del período.</li>
+<li>Hoja de datos: <code>ExportarAExcel</code>. La hoja <code>Tabla</code> es solo visual y no se procesa.</li>
+<li>No mueva, elimine ni renombre columnas existentes.</li>
+<li>No agregue filas de totales manuales fuera de los marcadores EXTRA de la paramétrica: los totales visuales los construye Gold.</li>
+<li>Revise que el código no esté ya en el archivo del mismo período. Silver descarta duplicados y registros sin el campo de cuenta necesario (<code>nivel_5</code> o <code>nivel_4</code>).</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Puede revisar los archivos de meses anteriores y tomarlos como referencia para agregar los registros.</p>
+</div>
+<h3 id="43-compras-por-producto-y-cartera-por-edades">4.3 Compras por producto y cartera por edades<a class="headerlink" href="#43-compras-por-producto-y-cartera-por-edades" title="Permanent link">&para;</a></h3>
+<p><code>2_2_compras_por_producto</code> se descarga directamente de World Office en <code>01_Bronce/data/02_compras_producto_glp/02_compras_por_producto/</code>. Usa cualquier <code>.xlsx</code>, hoja <code>ExportarAExcel</code> y <code>skip_rows: 2</code>; los datos observados empiezan en la fila 3. Si hay que corregir un dato, conserve las columnas y el orden de meses anteriores: </p>
+<ul>
+<li><code>Nombres</code></li>
+<li><code>Productos</code></li>
+<li><code>Fecha</code></li>
+<li><code>Documento</code></li>
+<li><code>Cantidad</code></li>
+<li><code>Total Ingresos</code></li>
+<li><code>Precio Promedio</code></li>
+<li><code>Clasif_Det</code>.</li>
+</ul>
+<p>Las seis primeras son requeridas. <code>Fecha</code> es <code>date</code>, <code>Cantidad</code>, <code>Total Ingresos</code> y <code>Precio Promedio</code> son <code>float</code>, y los demás campos son <code>string</code> salvo <code>Clasif_Det</code>, que es <code>float</code> cuando viene informado.</p>
+<p><code>6_1_cartera_producto</code> se descarga en <code>01_Bronce/data/06_cartera_producto/</code>, como <code>.xlsx</code>, hoja <code>ExportarAExcel</code>. El archivo observado tiene título en la fila 1, nombres reales en la fila 3 y datos desde la fila 4; por eso es una excepción semiestructurada. El clean aplana el encabezado, extrae la fecha de cierre del título y descarta <code>TOTAL GENERAL</code>. No cambie la disposición de las tres filas iniciales ni convierta el reporte a una tabla plana. <code>mappings.yaml</code> aún marca esta fuente como <code>pendiente_diseno</code> y el script Silver usa un contrato provisional; cualquier cambio de columnas debe validarse con el owner antes de publicarlo.</p>
+<h2 id="5-otras-fuentes-manuales">5. Otras fuentes manuales<a class="headerlink" href="#5-otras-fuentes-manuales" title="Permanent link">&para;</a></h2>
+<p>Las siguientes instrucciones se basan en los archivos Bronze reales y en sus muestras. Para todas, actualice el archivo en la ruta equivalente de <code>01_Bronce/data/</code> y no modifique los encabezados.</p>
+<h3 id="51-7_4_costo_embarque">5.1 <code>7_4_costo_embarque</code><a class="headerlink" href="#51-7_4_costo_embarque" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo:</strong> <code>costo_embarque.xlsx</code> — patrón <code>**/*.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>datos</code> (desde la fila 2). La hoja <code>Resumen Regulatorio</code> es solo informativa.</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue la nueva fila al final de la hoja <code>datos</code>.</li>
+<li>Mantenga una fila por período; no cambie el nombre del archivo.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>fecha</code> → <code>date</code></li>
+<li><code>costo_embarque</code>, <code>alpha</code> → <code>float</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="52-7_5_costo_transporte">5.2 <code>7_5_costo_transporte</code><a class="headerlink" href="#52-7_5_costo_transporte" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo:</strong> <code>costo_transporte.xlsx</code> — patrón <code>**/*.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>calculo_TPCB</code> (desde la fila 2). La hoja <code>Resumen Regulatorio</code> es solo informativa.</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue el período al final de la hoja <code>calculo_TPCB</code>.</li>
+<li>Conserve el orden y los nombres de las siete columnas.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Mes de Aplicación (m)</code>, <code>Mes del Costo TPCB (m-1)</code>, <code>Mes Referencia IPP (m-2)</code> → <code>date</code></li>
+<li><code>IPP (m-2)</code>, <code>IPP Feb-08 (Base)</code>, <code>TPCB Feb-08 (COP/kg)</code>, <code>TPCB Calculado (m-1) [COP/kg]</code> → <code>float</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="53-8_1_conversion_auto_glp">5.3 <code>8_1_conversion_auto_glp</code><a class="headerlink" href="#53-8_1_conversion_auto_glp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>01.Formato mensual Conversión Auto GLP.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> — encabezados en fila 1, descripciones en fila 2, datos desde fila 3 (<code>skip_rows: [1]</code>).</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue filas debajo del último registro.</li>
+<li>No elimine ni sobreescriba la fila 2 de descripciones.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Id Registro</code> → <code>integer</code> (único, sin duplicados)</li>
+<li><code>Fecha</code> → <code>date</code></li>
+<li>Identificación, usuario, estado, observaciones → <code>string</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="54-8_2_rutas_vehiculos">5.4 <code>8_2_rutas_vehiculos</code><a class="headerlink" href="#54-8_2_rutas_vehiculos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>02.Formato mensual Rutas Vehículos.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> — misma estructura de fila 1/2/3 que los demás formatos.</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue una fila por fecha y por vehículo.</li>
+<li>No cambie acentos ni espacios de los encabezados.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Fecha</code> → <code>date</code></li>
+<li><code>Placa</code>, <code>Linea negocio</code> → <code>string</code></li>
+<li><code>Km recorridos</code> → <code>float</code></li>
+<li>Conteos de eventos (tres columnas) → <code>integer</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="55-8_3_facturacion">5.5 <code>8_3_facturacion</code><a class="headerlink" href="#55-8_3_facturacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>03.Formato mensual Facturación.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> (datos desde la fila 3).</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue filas al final de la tabla.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Id Registro</code> → <code>integer</code> (único, sin duplicados)</li>
+<li>Números y estados → <code>string</code></li>
+<li>Fechas de proceso y creación → <code>date</code></li>
+<li><code>Observaciones</code> → <code>string</code></li>
+<li><code>Fecha fin proceso</code> puede quedar vacía (no es requerida), pero la columna debe existir.</li>
+</ul>
+</li>
+</ul>
+<h3 id="56-8_4_rrhh">5.6 <code>8_4_rrhh</code><a class="headerlink" href="#56-8_4_rrhh" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>04.Formato mensual RRHH.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> (datos desde la fila 3).</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue el registro del mes al final.</li>
+<li>No agregue subtotales dentro de la tabla.</li>
+<li>No elimine ni sobreescriba la fila 2 de descripciones.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Mes liquidado</code>, <code>Fecha creación</code> → <code>date</code></li>
+<li>Cinco indicadores numéricos → <code>integer</code></li>
+<li><code>Observaciones</code> → <code>string</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="57-8_5_accidentes">5.7 <code>8_5_accidentes</code><a class="headerlink" href="#57-8_5_accidentes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>05.Formato mensual Accidentes.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> (datos desde la fila 3).</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue una fila por período.</li>
+<li>Mantenga intactos los encabezados y la fila descriptiva (fila 2).</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Id Registro</code> → <code>integer</code> (único, sin duplicados)</li>
+<li><code>Fecha</code>, <code>Fecha creación</code> → <code>date</code></li>
+<li>Cantidades → <code>integer</code></li>
+<li>Observaciones → <code>string</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="58-8_6_simulacros">5.8 <code>8_6_simulacros</code><a class="headerlink" href="#58-8_6_simulacros" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>06.Formato mensual Simulacros.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Hoja1</code> (datos desde la fila 3).</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue una fila por simulacro.</li>
+<li>No escriba datos sobre la fila 2, que contiene las descripciones.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Id Registro</code> → <code>integer</code> (único, sin duplicados)</li>
+<li><code>Fecha Simulacro</code> → <code>date</code></li>
+<li>Nombre, tipo, cumplimiento, observaciones → <code>string</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="59-8_7_saldos">5.9 <code>8_7_saldos</code><a class="headerlink" href="#59-8_7_saldos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Archivo fijo:</strong> <code>07.Formato Saldos.xlsx</code></li>
+<li><strong>Hoja de datos:</strong> <code>Data</code> (datos desde la fila 2). La hoja <code>Resumen</code> es una vista dinámica y no debe usarse como tabla de carga.</li>
+<li><strong>Al actualizar:</strong><ul>
+<li>Agregue las filas al final de la hoja <code>Data</code>.</li>
+<li>Actualice fecha y registros de la fuente diaria sin reemplazar los encabezados.</li>
+</ul>
+</li>
+<li><strong>Columnas y tipos:</strong><ul>
+<li><code>Fecha</code>, <code>FECHA DE PAGO</code> → <code>date</code></li>
+<li><code>Valor</code>, <code>VLR CUOTA</code> → <code>float</code></li>
+<li>Categoría, entidad, concepto, detalle, tipo → <code>string</code></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de septiembre de 2026 14:30:33 UTC">25 de septiembre de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
+  Última actualización: 25 de septiembre de 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1461 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../01.Instalacion_Requerimientos/01.Instalacion/">
+      
+      
+        <link rel="next" href="../02.Fuentes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo_doc_megas.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>2.1 Configuración técnica de SharePoint - Modelo Analítico Seguimiento Megas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="23abf7" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#configuracion-tecnica-de-sharepoint" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-header__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelo Analítico Seguimiento Megas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2.1 Configuración técnica de SharePoint
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-nav__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    Modelo Analítico Seguimiento Megas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.Instalacion_Requerimientos/01.Instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Instalación y Requerimientos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configuración SharePoint
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Configuración SharePoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Configuración técnica de SharePoint
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Configuración técnica de SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-registro-de-la-aplicacion-en-azure-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Registro de la aplicación en Azure AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Registro de la aplicación en Azure AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-el-app-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Crear el App registration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-crear-y-registrar-el-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Crear y registrar el certificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-permisos-y-consentimiento-de-administrador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Permisos y consentimiento de administrador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estructura-de-carpetas-sincronizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estructura de carpetas sincronizada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-antes-de-ejecutar-el-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Antes de ejecutar el pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Fuentes y Responsables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.Actualizacion_Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Actualización de Fuentes en el SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Código Fuente (ETLs)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Código Fuente (ETLs)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/01.Esquema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Estructura y Esquema de ejecución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/05.Pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Pipeline (Orquestador Principal)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/02.apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/02.Capa_bronce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Capa Bronce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/03.Capa_plata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Capa Plata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03.ETLs/04.Capa_oro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Capa Oro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Tablero Power BI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Tablero Power BI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.MR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Modelo Relacional y Medidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.Inicio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/01.Vision_General/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Visión General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/02.Vision_Tactica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Visión Táctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/03.Seguimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Seguimiento de Proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-registro-de-la-aplicacion-en-azure-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Registro de la aplicación en Azure AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Registro de la aplicación en Azure AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-crear-el-app-registration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Crear el App registration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-crear-y-registrar-el-certificado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Crear y registrar el certificado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-permisos-y-consentimiento-de-administrador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Permisos y consentimiento de administrador
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Variables de entorno
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-estructura-de-carpetas-sincronizada" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Estructura de carpetas sincronizada
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-antes-de-ejecutar-el-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Antes de ejecutar el pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="configuracion-tecnica-de-sharepoint">Configuración técnica de SharePoint<a class="headerlink" href="#configuracion-tecnica-de-sharepoint" title="Permanent link">&para;</a></h1>
+<h2 id="1-introduccion">1. Introducción<a class="headerlink" href="#1-introduccion" title="Permanent link">&para;</a></h2>
+<p>La integración con SharePoint mantiene una copia operativa del proyecto entre el servidor local y el sitio de SharePoint. El flujo descarga archivos Bronce nuevos o modificados, y sube el código, la configuración, los archivos Parquet y los logs generados por todo el pipeline desde la capa Bronce hasta la capa oro.</p>
+<p>La comunicación se realiza contra la <strong>SharePoint REST API clásica</strong>, mediante endpoints <code>_api/web/...</code>. La autenticación se obtiene con MSAL usando una aplicación de Microsoft Entra ID y un certificado, no solo un <code>client secret</code>.</p>
+<p>En <code>pipeline.py</code>, la sincronización ocurre en dos momentos:</p>
+<ol>
+<li>Después de ejecutar las fuentes API y antes de la capa Bronce, se crea la estructura remota con <code>sync_folder_structure()</code> y se descarga Bronce con <code>download_Bronce_incremental()</code>.</li>
+<li>Después de ejecutar Bronce, Silver y Gold, se suben los respaldos con <code>upload_backup_and_config()</code> y <code>upload_parquets_and_logs()</code>.</li>
+</ol>
+<p>El entorno se selecciona con <code>--env prod</code>, con <code>PIPELINE_ENV=prod</code> o, por defecto, se usa <code>test</code>.</p>
+<h2 id="2-registro-de-la-aplicacion-en-azure-ad">2. Registro de la aplicación en Azure AD<a class="headerlink" href="#2-registro-de-la-aplicacion-en-azure-ad" title="Permanent link">&para;</a></h2>
+<p>En la documentación actual de Microsoft, Azure AD se denomina <strong>Microsoft Entra ID</strong>.</p>
+<h3 id="21-crear-el-app-registration">2.1 Crear el App registration<a class="headerlink" href="#21-crear-el-app-registration" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En el ambiente de <strong>Microsoft Entra ID</strong> de Megas, cree un <strong>App registration</strong> con un nombre identificable, por ejemplo <code>Tablero MEGAS</code>.</li>
+<li>Seleccione cuentas compatibles únicamente con el directorio organizacional de este tenant (<strong>single tenant</strong>).</li>
+<li>Conserve los identificadores que muestra el registro:</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Dato en Microsoft Entra ID</th>
+<th>Variable para <code>test</code></th>
+<th>Variable para <code>prod</code></th>
+<th>Uso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application (client) ID</td>
+<td><code>TEST_CLIENT_ID</code></td>
+<td><code>PROD_CLIENT_ID</code></td>
+<td>Identifica la aplicación ante MSAL.</td>
+</tr>
+<tr>
+<td>Directory (tenant) ID</td>
+<td><code>TEST_TENANT_ID</code></td>
+<td><code>PROD_TENANT_ID</code></td>
+<td>Identifica el tenant usado en <code>https://login.microsoftonline.com/&lt;tenant&gt;</code>.</td>
+</tr>
+<tr>
+<td>Thumbprint del certificado</td>
+<td><code>TEST_CERT_THUMBPRINT</code></td>
+<td><code>PROD_CERT_THUMBPRINT</code></td>
+<td>Vincula la autenticación con el certificado registrado en la aplicación.</td>
+</tr>
+</tbody>
+</table>
+<p>Se puede usar la misma aplicación y certificado en ambos entornos, si el equipo lo aprueba. En ese caso se repiten los valores en las variables <code>TEST_*</code> y <code>PROD_*</code>. También es posible definir una aplicación o certificado distinto para producción.</p>
+<h3 id="22-crear-y-registrar-el-certificado">2.2 Crear y registrar el certificado<a class="headerlink" href="#22-crear-y-registrar-el-certificado" title="Permanent link">&para;</a></h3>
+<p>El código construye <code>ConfidentialClientApplication</code> con un objeto que contiene <code>private_key</code> y <code>thumbprint</code>. Por tanto, el flujo esperado es autenticación por <strong>certificado</strong>.</p>
+<p>Genere un par de llaves y conserve:</p>
+<ul>
+<li>El certificado público, normalmente <code>.cer</code>, para cargarlo en <strong>Certificates &amp; secrets &gt; Certificates</strong> de la aplicación.</li>
+<li>La llave privada, normalmente <code>key.pem</code>, para guardarla únicamente en el servidor local que ejecutará el pipeline.</li>
+</ul>
+<p>Ejemplo de generación con OpenSSL:</p>
+<div class="highlight"><pre><span></span><code><span class="n">openssl</span> <span class="n">req</span> <span class="n">-x509</span> <span class="n">-newkey</span> <span class="n">rsa</span><span class="p">:</span><span class="n">2048</span> <span class="n">-keyout</span> <span class="n">key</span><span class="p">.</span><span class="n">pem</span> <span class="n">-out</span> <span class="n">cert</span><span class="p">.</span><span class="n">pem</span> <span class="n">-days</span> <span class="n">365</span> <span class="n">-nodes</span> <span class="n">-subj</span> <span class="s2">&quot;/CN=Tablero-MEGAS-SharePoint&quot;</span>
+<span class="n">openssl</span> <span class="n">x509</span> <span class="n">-in</span> <span class="n">cert</span><span class="p">.</span><span class="n">pem</span> <span class="n">-outform</span> <span class="n">der</span> <span class="n">-out</span> <span class="n">cert</span><span class="p">.</span><span class="n">cer</span>
+</code></pre></div>
+<p>Obtenga el thumbprint del certificado público y elimine los espacios al copiarlo a la variable de entorno. Por ejemplo, con PowerShell:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-PfxCertificate</span> <span class="p">.\</span><span class="n">cert</span><span class="p">.</span><span class="n">cer</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Thumbprint</span><span class="p">,</span> <span class="n">Subject</span><span class="p">,</span> <span class="n">NotAfter</span>
+</code></pre></div>
+<p>La llave privada se referencia con <code>TEST_CERT_KEY_PATH</code> o <code>PROD_CERT_KEY_PATH</code>. Si no se define, el script busca <code>00_sources/scripts/02_sharepoint/key.pem</code> relativo a la raíz del proyecto.</p>
+<div class="admonition warning">
+<p class="admonition-title">La llave privada nunca se sincroniza</p>
+<p>No suba <code>key.pem</code>, <code>cert.pem</code>, <code>cert.cer</code> con material privado, ni ningún archivo de credenciales a Git o SharePoint. La función <code>_is_excluded_relative_path()</code> de <code>sync_sharepoint.py</code> excluye <code>.env</code>, <code>credenciales.env</code>, <code>key.pem</code>, <code>credentials.json</code> y archivos con extensión <code>.pem</code>, <code>.key</code>, <code>.pyo</code> o <code>.pyc</code>.</p>
+</div>
+<h2 id="3-permisos-y-consentimiento-de-administrador">3. Permisos y consentimiento de administrador<a class="headerlink" href="#3-permisos-y-consentimiento-de-administrador" title="Permanent link">&para;</a></h2>
+<p>La API usada por el código es SharePoint Online, no Microsoft Graph: las solicitudes se envían a rutas como <code>_api/web/GetFolderByServerRelativeUrl(...)</code>. El administrador debe confirmar en el tenant el recurso exacto al que se asigna el permiso.</p>
+<table>
+<thead>
+<tr>
+<th>Recurso API</th>
+<th>Tipo de permiso</th>
+<th>Permiso</th>
+<th>Por qué se necesita</th>
+<th>Quién lo otorga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SharePoint (Office 365 SharePoint Online)</td>
+<td>Aplicación</td>
+<td><code>Sites.FullControl.All</code> o el permiso mínimo equivalente aprobado por seguridad</td>
+<td>Leer y descargar Bronce; crear carpetas; subir código, configuración, Parquets y logs.</td>
+<td>Administrador de Microsoft 365 / administrador de SharePoint.</td>
+</tr>
+</tbody>
+</table>
+<p>El permiso debe autorizarse como <strong>Application permission</strong> sobre <strong>SharePoint (Office 365 SharePoint Online)</strong> y requiere <strong>Grant admin consent</strong>. Sin consentimiento de administrador, el certificado puede estar correctamente registrado y aun así la aplicación no podrá obtener un token utilizable para el sitio.</p>
+<p>La concesión debe gestionarse normalmente desde la administración de SharePoint, por ejemplo mediante <code>appinv.aspx</code>, o con PnP PowerShell usando los comandos aprobados por el administrador, como <code>Register-PnPAzureADApp</code> y <code>Grant-PnPAzureADAppSitePermission</code>. No se debe asumir que configurar permisos de API de Microsoft Graph concede acceso a los endpoints REST de SharePoint.</p>
+<div class="admonition warning">
+<p class="admonition-title">Confirmar el recurso del token</p>
+<p>El código usa SharePoint REST, pero el valor de respaldo actual de <code>sync_sharepoint.py</code> es <code>https://graph.microsoft.com/.default</code>. Para que el token sea válido contra REST, cada variable <code>TEST_SCOPES</code> o <code>PROD_SCOPES</code> debe apuntar al recurso de SharePoint, por ejemplo <code>https://&lt;tenant&gt;.sharepoint.com/.default</code>, y no a Graph. El administrador de Microsoft 365 debe confirmar el hostname exacto, el permiso efectivo y el mecanismo de concesión en este tenant.</p>
+</div>
+<p>Los valores se cargan desde <code>.env</code> y, normalmente, desde <code>00_sources/scripts/02_sharepoint/credenciales.env</code> o desde el archivo indicado en <code>*_CREDENTIALS_FILE</code>. Use la plantilla <code>.env.example</code> del proyecto como referencia de nombres, si está disponible, y mantenga los valores reales fuera del control de versiones.</p>
+<h2 id="4-variables-de-entorno">4. Variables de entorno<a class="headerlink" href="#4-variables-de-entorno" title="Permanent link">&para;</a></h2>
+<p>Las variables se resuelven con el prefijo del entorno seleccionado. <code>TEST_*</code> se usa con <code>python pipeline.py</code>; <code>PROD_*</code> se usa con <code>python pipeline.py --env prod</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Propósito</th>
+<th>Origen del valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TEST_CLIENT_ID</code> / <code>PROD_CLIENT_ID</code></td>
+<td>Application (client) ID de la app registration.</td>
+<td>Microsoft Entra ID.</td>
+</tr>
+<tr>
+<td><code>TEST_TENANT_ID</code> / <code>PROD_TENANT_ID</code></td>
+<td>Directory (tenant) ID.</td>
+<td>Microsoft Entra ID.</td>
+</tr>
+<tr>
+<td><code>TEST_CERT_THUMBPRINT</code> / <code>PROD_CERT_THUMBPRINT</code></td>
+<td>Huella del certificado público registrado.</td>
+<td>Certificado cargado en la app registration.</td>
+</tr>
+<tr>
+<td><code>TEST_CERT_KEY_PATH</code> / <code>PROD_CERT_KEY_PATH</code></td>
+<td>Ruta local a la llave privada PEM.</td>
+<td>Decisión operativa del servidor; el archivo debe existir y ser legible por el proceso.</td>
+</tr>
+<tr>
+<td><code>TEST_SP_BASE_URL</code> / <code>PROD_SP_BASE_URL</code></td>
+<td>Host del tenant de SharePoint, por ejemplo <code>https://megas9411.sharepoint.com</code>.</td>
+<td>Configuración del tenant; el código usa este valor o el valor por defecto configurado.</td>
+</tr>
+<tr>
+<td><code>TEST_SP_SITE_PATH</code> / <code>PROD_SP_SITE_PATH</code></td>
+<td>Ruta relativa al sitio y a la biblioteca raíz del entorno.</td>
+<td>Decisión del equipo de SharePoint. Producción debe definirse explícitamente.</td>
+</tr>
+<tr>
+<td><code>TEST_SCOPES</code> / <code>PROD_SCOPES</code></td>
+<td>Recurso para <code>acquire_token_for_client</code>.</td>
+<td>Debe configurarse para SharePoint, por ejemplo <code>https://&lt;tenant&gt;.sharepoint.com/.default</code>; revisar la advertencia anterior.</td>
+</tr>
+<tr>
+<td><code>TEST_CREDENTIALS_FILE</code> / <code>PROD_CREDENTIALS_FILE</code></td>
+<td>Ruta a un archivo adicional de variables.</td>
+<td>Decisión operativa; si es relativa, se interpreta desde la raíz del proyecto.</td>
+</tr>
+</tbody>
+</table>
+<p>Ejemplo mínimo de rutas, sin valores secretos:</p>
+<div class="highlight"><pre><span></span><code>TEST_SP_BASE_URL=https://megas9411.sharepoint.com
+TEST_SP_SITE_PATH=/sites/TABLEROMEGAS/Documentos compartidos/TABLERO MEGAS/test
+PROD_SP_BASE_URL=https://megas9411.sharepoint.com
+PROD_SP_SITE_PATH=/sites/TABLEROMEGAS/Documentos compartidos/TABLERO MEGAS/prod
+TEST_SCOPES=https://&lt;tenant&gt;.sharepoint.com/.default
+PROD_SCOPES=https://&lt;tenant&gt;.sharepoint.com/.default
+</code></pre></div>
+<p>El script conserva compatibilidad con nombres heredados sin prefijo, como <code>client_id</code>, <code>tenant_id</code>, <code>cert_thumbprint</code> y <code>scopes_sharepoint_online</code>. Para una configuración nueva se recomienda usar siempre las variables <code>TEST_*</code> y <code>PROD_*</code>.</p>
+<h2 id="5-estructura-de-carpetas-sincronizada">5. Estructura de carpetas sincronizada<a class="headerlink" href="#5-estructura-de-carpetas-sincronizada" title="Permanent link">&para;</a></h2>
+<p>La raíz configurada en <code>*_SP_SITE_PATH</code> tiene esta forma:</p>
+<div class="highlight"><pre><span></span><code>/sites/TABLEROMEGAS/Documentos compartidos/TABLERO MEGAS/&lt;entorno&gt;
+</code></pre></div>
+<p><code>&lt;entorno&gt;</code> es <code>test</code> o <code>prod</code>. Ambos ambientes conservan el mismo layout; únicamente cambia la ruta base para evitar mezclar archivos de pruebas con producción.</p>
+<table>
+<thead>
+<tr>
+<th>Carpeta o archivo en SharePoint</th>
+<th>Carpeta o archivo local equivalente</th>
+<th>Contenido</th>
+<th>Dirección de sincronización</th>
+<th>Excluido de sincronización</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>00_sources/</code></td>
+<td><code>00_sources/</code></td>
+<td>Scripts de APIs archivos de muestra de cada fuente de archivos manuales.</td>
+<td>Subida a SharePoint; <code>sync_folder_structure()</code> crea sus carpetas.</td>
+<td>No, salvo credenciales, llaves, cachés y extensiones excluidas.</td>
+</tr>
+<tr>
+<td><code>01_Bronce/data/</code></td>
+<td><code>01_Bronce/data/</code></td>
+<td>Archivos Bronce de entrada. En esta carpeta se actualizan los archivos manuales por parte de los responsables dentro de MEGAS</td>
+<td>Descarga incremental a local y subida de archivos locales modificados.</td>
+<td>No, salvo archivos excluidos por <code>_is_excluded_relative_path()</code>.</td>
+</tr>
+<tr>
+<td><code>01_Bronce/parquet/</code></td>
+<td><code>01_Bronce/parquet/</code></td>
+<td>Parquets de Bronce. Archivos comprimidos sin permisos directos de edición</td>
+<td>Subida a SharePoint.</td>
+<td>No para <code>.parquet</code>; otros tipos no son candidatos de subida.</td>
+</tr>
+<tr>
+<td><code>02_silver/data/</code></td>
+<td><code>02_silver/data/</code></td>
+<td>Resultados Parquet de Silver.</td>
+<td>Subida a SharePoint.</td>
+<td>No para <code>.parquet</code>; otros tipos no son candidatos de subida.</td>
+</tr>
+<tr>
+<td><code>03_gold/data/</code></td>
+<td><code>03_gold/data/</code></td>
+<td>Resultados Parquet de Gold.</td>
+<td>Subida a SharePoint.</td>
+<td>No para <code>.parquet</code>; otros tipos no son candidatos de subida.</td>
+</tr>
+<tr>
+<td><code>09_logs/</code></td>
+<td><code>09_logs/</code></td>
+<td>Logs del pipeline, ingesta y capas.</td>
+<td>Subida a SharePoint únicamente para archivos <code>.log</code>.</td>
+<td>No para <code>.log</code>; secretos y extensiones excluidas siguen fuera.</td>
+</tr>
+<tr>
+<td><code>utils/</code></td>
+<td><code>utils/</code></td>
+<td>Utilidades Python compartidas.</td>
+<td>Subida a SharePoint.</td>
+<td>No, salvo cachés, credenciales y extensiones excluidas.</td>
+</tr>
+<tr>
+<td><code>01_Bronce/scripts/</code>, <code>02_silver/scripts/</code>, <code>03_gold/scripts/</code></td>
+<td>Mismas rutas locales</td>
+<td>Código ejecutable de las capas.</td>
+<td>Subida a SharePoint mediante <code>upload_backup_and_config()</code>.</td>
+<td>No, salvo archivos excluidos.</td>
+</tr>
+<tr>
+<td><code>pipeline.py</code></td>
+<td><code>pipeline.py</code></td>
+<td>Orquestador principal.</td>
+<td>Subida a SharePoint mediante <code>upload_backup_and_config()</code>.</td>
+<td>No.</td>
+</tr>
+<tr>
+<td><code>07_config/sources.yaml</code></td>
+<td><code>07_config/sources.yaml</code></td>
+<td>Configuración de fuentes.</td>
+<td>Subida a SharePoint mediante <code>upload_backup_and_config()</code>.</td>
+<td>No.</td>
+</tr>
+<tr>
+<td><code>07_config/mappings.yaml</code></td>
+<td><code>07_config/mappings.yaml</code></td>
+<td>Mapeos de transformación.</td>
+<td>Subida a SharePoint mediante <code>upload_backup_and_config()</code>.</td>
+<td>No.</td>
+</tr>
+<tr>
+<td>Archivos de credenciales y llaves</td>
+<td><code>.env</code>, <code>credenciales.env</code>, <code>key.pem</code>, archivos <code>.pem</code> o <code>.key</code></td>
+<td>Secretos y material criptográfico.</td>
+<td>No se descargan ni se suben por las rutinas de archivos.</td>
+<td>Sí: nunca deben publicarse.</td>
+</tr>
+</tbody>
+</table>
+<p><code>sync_folder_structure()</code> compara las carpetas locales con las carpetas remotas y crea las que falten. La descarga de archivos está limitada a Bronce; la subida se separa entre respaldo de código/configuración y resultados Parquet/logs.</p>
+<div class="admonition note">
+<p class="admonition-title">El layout local es el espejo del layout remoto</p>
+<p>La estructura de carpetas del servidor local debe ser un espejo exacto de la estructura correspondiente en SharePoint. <code>sync_folder_structure()</code> crea automáticamente en SharePoint cualquier carpeta local que falte. No se deben versionar ni mantener manualmente diferencias de carpetas entre ambos lados; la rutina de sincronización es la fuente operativa para crearlas.</p>
+</div>
+<h2 id="6-antes-de-ejecutar-el-pipeline">6. Antes de ejecutar el pipeline<a class="headerlink" href="#6-antes-de-ejecutar-el-pipeline" title="Permanent link">&para;</a></h2>
+<p>Se sugiere validar este check list antes de ejecutar el pipeline (orquestador principal):</p>
+<ul>
+<li>[ ] La app registration existe en el tenant correcto y está configurada como single tenant.</li>
+<li>[ ] El certificado público está cargado en la aplicación y el thumbprint coincide con <code>TEST_CERT_THUMBPRINT</code> o <code>PROD_CERT_THUMBPRINT</code>.</li>
+<li>[ ] La llave privada existe en <code>TEST_CERT_KEY_PATH</code> o <code>PROD_CERT_KEY_PATH</code> y no se comparte ni se versiona.</li>
+<li>[ ] SharePoint Online tiene autorizado el permiso de aplicación aprobado, como <code>Sites.FullControl.All</code> o el mínimo equivalente.</li>
+<li>[ ] El administrador concedió consentimiento y confirmó el acceso al sitio correspondiente.</li>
+<li>[ ] <code>TEST_SCOPES</code> y <code>PROD_SCOPES</code> apuntan al recurso de SharePoint, no al fallback de Graph.</li>
+<li>[ ] <code>SP_BASE_URL</code> y <code>SP_SITE_PATH</code> apuntan al entorno correcto (<code>test</code> o <code>prod</code>).</li>
+<li>[ ] Las variables están cargadas mediante <code>.env</code> o <code>credenciales.env</code>/el archivo indicado en <code>*_CREDENTIALS_FILE</code>.</li>
+<li>[ ] La ejecución de prueba se valida con <code>python pipeline.py</code> en el ambiente de pruebas antes de usar <code>python pipeline.py --env prod</code> en el ambiente de producción.</li>
+</ul>
+<p>Para ejecutar:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">py</span>
+<span class="n">python</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-env</span> <span class="n">prod</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de septiembre de 2026 14:30:33 UTC">25 de septiembre de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
+  Última actualización: 25 de septiembre de 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
