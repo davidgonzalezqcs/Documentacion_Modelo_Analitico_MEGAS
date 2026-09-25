@@ -1,0 +1,1441 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02.apis/">
+      
+      
+        <link rel="next" href="../03.Capa_plata/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo_doc_megas.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3.4 Capa Bronce - Modelo Analítico Seguimiento Megas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="23abf7" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#capa-bronce" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-header__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelo Analítico Seguimiento Megas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.4 Capa Bronce
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-nav__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    Modelo Analítico Seguimiento Megas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.Instalacion_Requerimientos/01.Instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Instalación y Requerimientos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configuración SharePoint
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Configuración SharePoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/01.Estructura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Configuración técnica de SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/02.Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Fuentes y Responsables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/03.Actualizacion_Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Actualización de Fuentes en el SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Código Fuente (ETLs)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Código Fuente (ETLs)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Esquema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Estructura y Esquema de ejecución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05.Pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Pipeline (Orquestador Principal)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Capa Bronce
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Capa Bronce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-costo_ventas_bronce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 1: costo_ventas_bronce
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1: costo_ventas_bronce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-y-archivos-involucrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejecución y archivos involucrados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limpieza-y-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limpieza y normalización
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificacion-de-linea_negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificación de linea_negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-validacion-y-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas, validación y entrega
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-resto-de-scripts-bronze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 2: resto de scripts Bronze
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2: resto de scripts Bronze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingesta-y-validacion-comun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ingesta y validación común
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-publicas-de-transformers_bronzepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funciones públicas de transformers_bronze.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.Capa_plata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Capa Plata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.Capa_oro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Capa Oro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Tablero Power BI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Tablero Power BI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.MR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Modelo Relacional y Medidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.Inicio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/01.Vision_General/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Visión General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/02.Vision_Tactica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Visión Táctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/03.Seguimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Seguimiento de Proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parte-1-costo_ventas_bronce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 1: costo_ventas_bronce
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 1: costo_ventas_bronce">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejecucion-y-archivos-involucrados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ejecución y archivos involucrados
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limpieza-y-normalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limpieza y normalización
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificacion-de-linea_negocio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificación de linea_negocio
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rutas-validacion-y-entrega" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rutas, validación y entrega
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parte-2-resto-de-scripts-bronze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parte 2: resto de scripts Bronze
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Parte 2: resto de scripts Bronze">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingesta-y-validacion-comun" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ingesta y validación común
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funciones-publicas-de-transformers_bronzepy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funciones públicas de transformers_bronze.py
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="capa-bronce">Capa Bronce<a class="headerlink" href="#capa-bronce" title="Permanent link">&para;</a></h1>
+<p>La capa Bronce conserva la ingesta de las fuentes y sus snapshots Parquet. La
+excepción es <code>costo_ventas_bronce</code>, que prepara un archivo Excel para revisión
+contable antes de incorporarlo como fuente definitiva.</p>
+<h2 id="parte-1-costo_ventas_bronce">Parte 1: costo_ventas_bronce<a class="headerlink" href="#parte-1-costo_ventas_bronce" title="Permanent link">&para;</a></h2>
+<h3 id="ejecucion-y-archivos-involucrados">Ejecución y archivos involucrados<a class="headerlink" href="#ejecucion-y-archivos-involucrados" title="Permanent link">&para;</a></h3>
+<p><code>01_costo_ventas_bronce.py</code> es el primer script de la lista <code>BRONZE_SCRIPTS</code>
+de <code>pipeline.py</code>. El orquestador detiene el pipeline si falla la capa Bronce. La ejecución operativa también tiene un lanzador de Windows junto al script:</p>
+<div class="highlight"><pre><span></span><code>01_bronze/scripts/Ejecutar_Costo_Ventas.bat
+</code></pre></div>
+<p>El script Python carga el contrato de <code>5_4_costo_ventas_preliminar</code> desde
+<code>mappings.yaml</code> y la configuración de la fuente desde <code>sources.yaml</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5_4_costo_ventas_preliminar</span>
+<span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">01_bronze/data/05_ventas/04_costo_ventas_preliminar/entrada</span>
+<span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;**/*.xlsx&quot;</span>
+<span class="nt">sheet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExportarAExcel</span>
+<span class="nt">skip_rows</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</code></pre></div>
+<h3 id="limpieza-y-normalizacion">Limpieza y normalización<a class="headerlink" href="#limpieza-y-normalizacion" title="Permanent link">&para;</a></h3>
+<p>Para cada Excel encontrado, el script aplica estas operaciones, en este orden
+general:</p>
+<ol>
+<li>Lee la hoja configurada (<code>ExportarAExcel</code>) omitiendo las tres primeras filas
+    y conserva inicialmente las columnas como texto.</li>
+<li>Marca <code>es_duplicado</code> sobre el DataFrame original y añade un identificador
+    temporal. Después usa las funciones de preparación de Silver con el contrato
+    de <code>mappings.yaml</code> para renombrar las columnas, tiparlas, eliminar
+    duplicados según las columnas requeridas y retirar el identificador temporal.</li>
+<li>Elimina <code>vendedor</code> y <code>vendedores</code>, si existen, y descarta las filas cuyo
+    <code>documento_contable</code> sea nulo.</li>
+<li>Crea <code>unidades_ajustada</code> a partir de <code>unidades</code>. Si
+    <code>documento_contable</code> contiene <code>DMC</code> (coincidencia sensible a mayúsculas),
+    multiplica esas unidades por <code>-1</code>.</li>
+<li>Inicializa <code>registro_valido</code> en <code>si</code> y lo cambia a <code>no</code> cuando
+    <code>codigo_inventario</code> no comienza por <code>PT</code> ni por <code>021</code>. </li>
+<li>Calcula <code>cantidad_kg</code>: extrae un número seguido de <code>kg</code> desde
+    <code>codigo_inventario</code> (acepta coma o punto decimal, y no distingue
+    mayúsculas/minúsculas) para códigos que contienen simultáneamente <code>lbs</code> y
+    <code>kg</code>; para códigos que contienen <code>litros EDS</code> usa <code>0.540026</code>; en los demás
+    casos usa <code>unidades_ajustada</code>. Si el documento contiene <code>NCCL</code> o <code>NDCL</code>,
+    fuerza <code>cantidad_kg</code> a <code>0.0</code>.</li>
+<li>Cruza <code>valor_unitario_venta</code> y <code>fecha</code> con la paramétrica
+    <code>precio_venta_eds.xlsx</code>, usando <code>Tarifa</code>, <code>Desde</code> y <code>Hasta</code>, para obtener la
+    estación EDS aplicable. Una tarifa con <code>Hasta</code> nulo se considera vigente.</li>
+</ol>
+<p>La carpeta de paramétricas que el script lee es:</p>
+<div class="highlight"><pre><span></span><code>01_bronze/data/05_ventas/04_costo_ventas_preliminar/00_parametricas
+</code></pre></div>
+<p>Los archivos son <code>clientes_granel_granjas.xlsx</code>, <code>clientes_mayorista.xlsx</code>,
+<code>precio_venta_eds.xlsx</code> y <code>umbral_granel_cilindros_tame.xlsx</code>. Los dos primeros
+se convierten en conjuntos de nombres de clientes y el último proporciona
+<code>valor_unitario_venta_limite</code>.</p>
+<h3 id="identificacion-de-linea_negocio">Identificación de <code>linea_negocio</code><a class="headerlink" href="#identificacion-de-linea_negocio" title="Permanent link">&para;</a></h3>
+<p>La asignación se realiza con <code>np.select</code>: se evalúan las condiciones en el
+orden siguiente y gana la primera que se cumple.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Orden</th>
+<th>Condición implementada</th>
+<th>Valor asignado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><code>registro_valido</code> es <code>no</code> o es <code>False</code></td>
+<td><code>No aplica</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><code>codigo_inventario</code> contiene <code>CILINDROS</code></td>
+<td><code>Cilindros - Sibaté</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><code>nombre_cliente</code> es exactamente <code>LOS MORALES DE CASTILLA SAS</code></td>
+<td><code>Granel - EDS Fusagasugá</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><code>nombre_cliente</code> es exactamente <code>LIVER S POOL SAS</code></td>
+<td><code>Granel - EDS Melgar</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><code>nombre_cliente</code> pertenece a <code>clientes_granel_granjas.xlsx</code></td>
+<td><code>Granel - Granjas</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><code>nombre_cliente</code> pertenece a <code>clientes_mayorista.xlsx</code></td>
+<td><code>Mayorista</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>El cliente contiene <code>CONSUMIDOR FINAL</code> o <code>CUANTIAS MENORES</code>, el código comienza por <code>021</code> y <code>unidades &lt; 7000</code></td>
+<td><code>Cilindros - SUI</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>El mismo candidato SUI y <code>unidades &gt;= 7000</code></td>
+<td><code>Cilindros - Tame</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>El código comienza por <code>021</code>, hay precio y es menor que <code>valor_unitario_venta_limite</code></td>
+<td><code>Cilindros - Tame</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>El código comienza por <code>021</code>, hay precio y es mayor o igual que el límite</td>
+<td><code>Granel</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Se encontró una estación en el cruce EDS</td>
+<td><code>Granel - &lt;estación&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: right;">Por defecto</td>
+<td>Ninguna condición anterior</td>
+<td><code>Sin línea identificada</code></td>
+</tr>
+</tbody>
+</table>
+<p>Las comparaciones de texto que usan <code>contains</code> no distinguen mayúsculas de
+minúsculas; las comparaciones exactas de los clientes y las pertenencias a las
+paramétricas sí se realizan sobre el texto previamente limpiado con <code>strip()</code>.
+Después de asignar la línea, el script elimina sus columnas temporales, ordena
+los registros y agrega filas de subtotal por línea. También escribe fórmulas
+Excel <code>SUM</code> para <code>cantidad_kg</code> y <code>valor_venta_cop</code>.</p>
+<h3 id="rutas-validacion-y-entrega">Rutas, validación y entrega<a class="headerlink" href="#rutas-validacion-y-entrega" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Fuente / destino</th>
+<th>Ruta local</th>
+<th>Configuración relevante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entrada</td>
+<td><code>5_4_costo_ventas_preliminar</code></td>
+<td><code>01_bronze/data/05_ventas/04_costo_ventas_preliminar/entrada</code></td>
+<td>Excel, patrón <code>**/*.xlsx</code>, hoja <code>ExportarAExcel</code>, <code>skip_rows: 3</code></td>
+</tr>
+<tr>
+<td>Salida inmediata del script</td>
+<td>Preparación para validar</td>
+<td><code>01_bronze/data/05_ventas/04_costo_ventas_preliminar/por_validar</code></td>
+<td>Un <code>.xlsx</code> por archivo de entrada, hoja <code>ExportarAExcel</code></td>
+</tr>
+<tr>
+<td>Destino posterior a la aprobación</td>
+<td><code>5_5_costo_ventas</code></td>
+<td><code>01_bronze/data/05_ventas/05_costo_ventas/</code></td>
+<td>Excel, patrón <code>**/*.xlsx</code>, hoja <code>ExportarAExcel</code>, <code>skip_rows: 0</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Validación contable obligatoria</p>
+<p>La salida de <code>por_validar</code> es preliminar. El equipo contable debe revisar y
+ validar el archivo antes de considerarlo definitivo y trasladarlo a
+ <code>01_bronze/data/05_ventas/05_costo_ventas/</code>. El script Python y el archivo
+ <code>.bat</code> no realizan automáticamente ese traslado.</p>
+</div>
+<p>Una vez validado, el archivo debe depositarse en la carpeta correspondiente a
+<code>5_5_costo_ventas</code>. <code>sync_sharepoint.py</code> conserva la misma ruta relativa bajo
+la raíz configurada del sitio: la carpeta local
+<code>01_bronze/data/05_ventas/05_costo_ventas/</code> se refleja como
+<code>/01_bronze/data/05_ventas/05_costo_ventas/</code>. La rutina
+<code>upload_parquets_and_logs()</code> incluye <code>01_bronze/data</code> entre sus carpetas de
+subida y <code>upload_file()</code> calcula el destino a partir de la ruta relativa del
+archivo. </p>
+<h2 id="parte-2-resto-de-scripts-bronze">Parte 2: resto de scripts Bronze<a class="headerlink" href="#parte-2-resto-de-scripts-bronze" title="Permanent link">&para;</a></h2>
+<h3 id="ingesta-y-validacion-comun">Ingesta y validación común<a class="headerlink" href="#ingesta-y-validacion-comun" title="Permanent link">&para;</a></h3>
+<p>El resto de las fuentes definidas en <code>sources.yaml</code> se procesa mediante
+<code>01_bronze/scripts/get_data.py</code> y <code>01_bronze/scripts/validate_schema.py</code>. Estos
+scripts importan las utilidades de <code>utils/transformers_bronze.py</code>; por tanto,
+no reimplementan en cada fuente la lectura, el descubrimiento de archivos, la
+generación de snapshots ni el registro de auditoría. <code>get_data.py</code> además
+calcula el hash MD5, reutiliza el último Parquet cuando el archivo no cambió y
+registra los estados <code>ok</code>, <code>skipped</code> o <code>error</code>. <code>validate_schema.py</code> reutiliza
+la búsqueda de Parquets y la normalización de flags para validar los contratos
+de <code>mappings.yaml</code>.</p>
+<h3 id="funciones-publicas-de-transformers_bronzepy">Funciones públicas de <code>transformers_bronze.py</code><a class="headerlink" href="#funciones-publicas-de-transformers_bronzepy" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Función</th>
+<th>Responsabilidad implementada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>normalize_flag(value, default)</code></td>
+<td>Convierte banderas a texto en minúsculas. Trata booleanos de PyYAML y los valores <code>true/yes/1</code> como <code>on</code>, y <code>false/no/0</code> como <code>off</code>; usa el valor predeterminado cuando recibe <code>None</code>.</td>
+</tr>
+<tr>
+<td><code>md5(path, chunk_size=8192)</code></td>
+<td>Calcula el hash MD5 leyendo el archivo por bloques, para detectar cambios sin cargarlo completo en memoria.</td>
+</tr>
+<tr>
+<td><code>append_audit(row, audit_log_path)</code></td>
+<td>Agrega una fila al histórico CSV sin sobrescribirlo y crea el encabezado si el archivo aún no existe.</td>
+</tr>
+<tr>
+<td><code>discover_files(base_path, pattern)</code></td>
+<td>Descubre archivos con el patrón glob configurado. Normaliza separadores, ordena el resultado y tiene un recorrido alternativo con expresión regular cuando <code>Path.glob</code> rechaza patrones con <code>**</code>.</td>
+</tr>
+<tr>
+<td><code>resolve_source_base_path(source, project_root=None)</code></td>
+<td>Resuelve la ruta base local usando <code>source.path</code> o, como alternativa, <code>source.output.path</code>.</td>
+</tr>
+<tr>
+<td><code>resolve_source_pattern(source)</code></td>
+<td>Obtiene el patrón desde <code>source.pattern</code> o desde <code>source.output.pattern</code>; si no existe, usa <code>**/*</code>.</td>
+</tr>
+<tr>
+<td><code>try_encodings(path, sep, skip_rows)</code></td>
+<td>Lee CSV probando <code>utf-8</code>, <code>latin-1</code> y <code>cp1252</code>, en ese orden, con separador, filas a omitir y columnas como texto.</td>
+</tr>
+<tr>
+<td><code>read_file(path, source, override)</code></td>
+<td>Lee Excel, CSV, API o Parquet según la configuración. El override por archivo prevalece para hoja y filas a omitir; en Excel usa <code>openpyxl</code> y en CSV puede autodetectar encoding. Mantiene la lectura cruda: no filtra columnas ni transforma tipos deliberadamente.</td>
+</tr>
+<tr>
+<td><code>parquet_path(parquet_dir, source_id, file_stem, timestamp)</code></td>
+<td>Crea la carpeta de la fuente y construye el nombre versionado <code>&lt;archivo&gt;__&lt;timestamp&gt;.parquet</code>, conservando snapshots históricos.</td>
+</tr>
+<tr>
+<td><code>load_mappings_notes(mappings_path, logger=None)</code></td>
+<td>Carga las notas opcionales de <code>mappings.yaml</code>, las compacta como texto por <code>source_id</code> y, si falla la lectura, registra una advertencia y devuelve un diccionario vacío.</td>
+</tr>
+<tr>
+<td><code>find_all_parquets(parquet_dir, source_id)</code></td>
+<td>Busca todos los Parquet de una fuente bajo su carpeta y los ordena por fecha de modificación; conserva un fallback para archivos históricos ubicados directamente en <code>01_bronze/parquet</code>.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Alcance de Bronze</p>
+<p>Bronze conserva la lectura cruda para las fuentes generales. Las
+ transformaciones de negocio específicas de <code>costo_ventas_bronce</code>, incluida
+ la clasificación de <code>linea_negocio</code>, pertenecen a su script especializado
+ y no a <code>transformers_bronze.py</code>.</p>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 22:36:05 UTC">23 de septiembre de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
+  Última actualización: 25 de septiembre de 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

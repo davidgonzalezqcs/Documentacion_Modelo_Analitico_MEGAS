@@ -1,0 +1,1770 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../01.Esquema/">
+      
+      
+        <link rel="next" href="../02.apis/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../images/logo_doc_megas.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>3.2 Pipeline (Orquestador Principal) - Modelo Analítico Seguimiento Megas</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="23abf7" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pipeline-orquestador-principal" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-header__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Modelo Analítico Seguimiento Megas
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3.2 Pipeline (Orquestador Principal)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Modelo Analítico Seguimiento Megas" class="md-nav__button md-logo" aria-label="Modelo Analítico Seguimiento Megas" data-md-component="logo">
+      
+  <img src="../../images/logo_doc_megas.png" alt="logo">
+
+    </a>
+    Modelo Analítico Seguimiento Megas
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01.Instalacion_Requerimientos/01.Instalacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Instalación y Requerimientos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Configuración SharePoint
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2. Configuración SharePoint
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/01.Estructura/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.1 Configuración técnica de SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/02.Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.2 Fuentes y Responsables
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02.ConfiguracionSharePoint/03.Actualizacion_Fuentes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.3 Actualización de Fuentes en el SharePoint
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Código Fuente (ETLs)
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3. Código Fuente (ETLs)
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01.Esquema/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.1 Estructura y Esquema de ejecución
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Pipeline (Orquestador Principal)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.2 Pipeline (Orquestador Principal)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-orden-de-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Orden de ejecución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Orden de ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-fuentes-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Fuentes API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#01-sincronizacion-sharepoint-a-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1. Sincronización SharePoint a local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-bronze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bronze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-silver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Silver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gold
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sincronizacion-local-a-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sincronización local a SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-reporte-final-y-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Reporte final y salida
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sincronizacion-con-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sincronización con SharePoint
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sincronización con SharePoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descarga-previa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descarga previa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subida-posterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subida posterior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entornos-y-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entornos y autenticación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-que-hacer-ante-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Qué hacer ante fallos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Qué hacer ante fallos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubicacion-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubicación de logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-del-log-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes del log maestro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-por-capa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnóstico por capa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reejecucion-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reejecución individual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallos-de-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fallos de SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretacion-para-automatizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretación para automatización
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.apis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.3 APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.Capa_bronce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.4 Capa Bronce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.Capa_plata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.5 Capa Plata
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.Capa_oro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3.6 Capa Oro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Tablero Power BI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    4. Tablero Power BI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.MR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.1 Modelo Relacional y Medidas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/00.Inicio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.2 Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/01.Vision_General/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.3 Visión General
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/02.Vision_Tactica/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.4 Visión Táctica
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04.Tablero_Power_BI/03.Seguimiento/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4.5 Seguimiento de Proceso
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-orden-de-ejecucion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Orden de ejecución
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Orden de ejecución">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-fuentes-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Fuentes API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#01-sincronizacion-sharepoint-a-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1. Sincronización SharePoint a local
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-bronze" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Bronze
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-silver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Silver
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-gold" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Gold
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-sincronizacion-local-a-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Sincronización local a SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-reporte-final-y-salida" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Reporte final y salida
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-sincronizacion-con-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Sincronización con SharePoint
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Sincronización con SharePoint">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descarga-previa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descarga previa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subida-posterior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subida posterior
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entornos-y-autenticacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Entornos y autenticación
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-que-hacer-ante-fallos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Qué hacer ante fallos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Qué hacer ante fallos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubicacion-de-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubicación de logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mensajes-del-log-maestro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mensajes del log maestro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diagnostico-por-capa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnóstico por capa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reejecucion-individual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reejecución individual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallos-de-sharepoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fallos de SharePoint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpretacion-para-automatizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpretación para automatización
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pipeline-orquestador-principal">Pipeline: orquestador principal<a class="headerlink" href="#pipeline-orquestador-principal" title="Permanent link">&para;</a></h1>
+<p><code>pipeline.py</code> coordina la ejecución de las capas <code>00_sources</code>, <code>01_bronze</code>,
+<code>02_silver</code> y <code>03_gold</code>. Las listas de scripts y las dependencias de Gold se
+declaran en el propio orquestador. El pipeline se ejecuta desde la raíz del
+proyecto:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>pipeline.py
+python<span class="w"> </span>pipeline.py<span class="w"> </span>--env<span class="w"> </span>prod
+<span class="nv">PIPELINE_ENV</span><span class="o">=</span>prod<span class="w"> </span>python<span class="w"> </span>pipeline.py
+</code></pre></div>
+<p>El entorno predeterminado de SharePoint es <code>test</code>. El argumento <code>--env</code> tiene
+prioridad sobre <code>PIPELINE_ENV</code>.</p>
+<h2 id="1-orden-de-ejecucion">1. Orden de ejecución<a class="headerlink" href="#1-orden-de-ejecucion" title="Permanent link">&para;</a></h2>
+<p>La ejecución sigue este orden:</p>
+<pre class="mermaid"><code>flowchart TD
+        A[Inicio] --&gt; B[00_sources: APIs]
+        B --&gt; C[Sincronización SharePoint a local]
+        C --&gt; D[01_bronze]
+        D --&gt;|Falla un script| X[Detener pipeline y reporte final]
+        D --&gt;|Todos OK| E[02_silver]
+        E --&gt; F{Silver: 2+ fallos?}
+        F --&gt;|Sí| G[Omitir Gold]
+        F --&gt;|No| H{Silver OK / total &gt;= 80%?}
+        H --&gt;|No| G
+        H --&gt;|Sí| I[03_gold en orden de dependencias]
+        I --&gt; J[Sincronización local a SharePoint]
+        G --&gt; J
+        X --&gt; K[Fin: código 1]
+        J --&gt; L[Reporte final y código de salida]
+        L --&gt; M[0 si no hay fallos u omisiones de scripts; 1 si los hay]</code></pre>
+<h3 id="0-fuentes-api">0. Fuentes API<a class="headerlink" href="#0-fuentes-api" title="Permanent link">&para;</a></h3>
+<p><code>SOURCES_API_SCRIPTS</code> ejecuta, con un tiempo máximo de 30 segundos por proceso:</p>
+<ul>
+<li><code>00_sources/scripts/01_vigigas/vigigas_api_client.py</code></li>
+<li><code>00_sources/scripts/03_mb_tx_propane/mb_tx_propane_api.py</code></li>
+<li><code>00_sources/scripts/04_trm/trm_api.py</code></li>
+</ul>
+<p>Si una API falla, el orquestador registra el fallo y continúa con las demás y
+con las fuentes manuales de Bronze. Estas entradas no incluyen <code>api_satrack.py</code>
+ni <code>api_zencillo.py</code>, que están excluidos del orquestador.</p>
+<h3 id="01-sincronizacion-sharepoint-a-local">0.1. Sincronización SharePoint a local<a class="headerlink" href="#01-sincronizacion-sharepoint-a-local" title="Permanent link">&para;</a></h3>
+<p>Se crea <code>SharePointSync</code> y se ejecutan <code>sync_folder_structure()</code> y
+<code>download_bronze_incremental()</code>. La primera asegura las carpetas locales que
+no existen en SharePoint; la segunda descarga en <code>01_bronze/data</code> los archivos
+Bronze nuevos o modificados. Si esta fase falla, el error se registra y el
+pipeline continúa con los archivos locales que ya existan.</p>
+<p>Un fallo al crear alguna carpeta se registra dentro del resumen de la
+sincronización, pero no detiene la ejecución. El detalle técnico queda en
+<code>09_logs/ingestion/sharepoint.log</code>.</p>
+<h3 id="1-bronze">1. Bronze<a class="headerlink" href="#1-bronze" title="Permanent link">&para;</a></h3>
+<p><code>BRONZE_SCRIPTS</code> ejecuta, en este orden:</p>
+<ol>
+<li><code>01_bronze/scripts/01_costo_ventas_bronce.py</code></li>
+<li><code>01_bronze/scripts/get_data.py</code></li>
+<li><code>01_bronze/scripts/validate_schema.py</code></li>
+</ol>
+<p>Bronze usa <code>stop_on_failure=True</code>. Cuando un script falla, los siguientes se
+registran como omitidos (<code>↷</code>), no se ejecutan Silver ni Gold y el proceso sale
+con código <code>1</code>.</p>
+<h3 id="2-silver">2. Silver<a class="headerlink" href="#2-silver" title="Permanent link">&para;</a></h3>
+<p><code>SILVER_SCRIPTS</code> contiene los procesos de limpieza de las fuentes. La capa no
+se detiene ante el fallo de un script: registra <code>✗</code> y continúa con los demás.</p>
+<p>Gold solo queda habilitado cuando se cumplen simultáneamente estas reglas:</p>
+<ul>
+<li>Silver tiene menos de dos scripts fallidos.</li>
+<li>La razón <code>scripts OK / scripts totales</code> es igual o superior a <code>80%</code>.</li>
+</ul>
+<p>Por tanto, Gold se bloquea con dos o más fallos aunque el porcentaje sea igual
+o superior al 80%. También se bloquea cuando el porcentaje es menor al 80%.
+En esos casos todos los scripts Gold se registran como omitidos.</p>
+<p>En <code>07_config/sources.yaml</code>, <code>status: on</code> identifica una fuente activa y
+<code>status: off</code> una fuente desactivada; <code>final_layer</code> indica hasta qué capa está
+configurada (<code>bronze</code>, <code>silver</code> o <code>gold</code>). Esos valores son metadatos de las
+fuentes que usan los procesos de las capas. Las listas que el orquestador
+ejecuta son las declaradas en <code>pipeline.py</code>, no una lista reconstruida en
+tiempo de ejecución a partir del YAML.</p>
+<h3 id="3-gold">3. Gold<a class="headerlink" href="#3-gold" title="Permanent link">&para;</a></h3>
+<p>Gold ejecuta <code>GOLD_SCRIPTS</code> según el orden producido por
+<code>resolve_gold_order(GOLD_SCRIPTS_RAW, GOLD_DEPENDENCIES)</code>. La función aplica un
+orden topológico y conserva, en lo posible, el orden original para scripts sin
+dependencias declaradas. Un ciclo de dependencias provoca un error explícito.</p>
+<p>Si una dependencia falló o fue omitida, el script dependiente no se ejecuta:
+se registra con <code>↷</code> y la razón <code>Dependencia(s) no disponible(s)</code>. Un fallo de
+Gold no detiene la ejecución de los scripts Gold posteriores que no estén
+bloqueados por ese fallo.</p>
+<p>Las dependencias declaradas incluyen, entre otras, <code>dim_clientes.py</code> respecto
+a <code>fact_ventas.py</code> y <code>fact_cartera.py</code>, y <code>fact_estados_resultados.py</code> respecto
+a <code>fact_ventas.py</code>. La fuente autoritativa y completa es
+<code>GOLD_DEPENDENCIES</code> en <code>pipeline.py</code>.</p>
+<h3 id="4-sincronizacion-local-a-sharepoint">4. Sincronización local a SharePoint<a class="headerlink" href="#4-sincronizacion-local-a-sharepoint" title="Permanent link">&para;</a></h3>
+<p>Después del reporte de las capas, si la instancia SharePoint se creó con
+éxito, se ejecutan:</p>
+<ul>
+<li><code>upload_backup_and_config()</code>: sube código de <code>00_sources</code>, los scripts de
+    las tres capas, <code>utils</code>, <code>pipeline.py</code>, <code>07_config/sources.yaml</code> y
+    <code>07_config/mappings.yaml</code>.</li>
+<li><code>upload_parquets_and_logs()</code>: sube <code>01_bronze/data</code>, los Parquet de
+    <code>01_bronze/parquet</code>, <code>02_silver/data</code>, <code>03_gold/data</code> y los archivos <code>.log</code>
+    de <code>09_logs</code>.</li>
+</ul>
+<p>No se suben <code>.env</code>, <code>credenciales.env</code>, <code>credentials.json</code>, <code>key.pem</code>, archivos
+con extensión <code>.pem</code> o <code>.key</code>, ni <code>__pycache__</code> o archivos <code>.pyc</code>/<code>.pyo</code>.</p>
+<h3 id="5-reporte-final-y-salida">5. Reporte final y salida<a class="headerlink" href="#5-reporte-final-y-salida" title="Permanent link">&para;</a></h3>
+<p><code>_print_final_report()</code> escribe el estado por capa, la duración, los scripts
+fallidos y los omitidos junto con su error y la ruta de log esperada. La
+función <code>main()</code> devuelve:</p>
+<table>
+<thead>
+<tr>
+<th>Resultado de scripts</th>
+<th style="text-align: right;">Código</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No hay fallos ni omisiones en APIs, Bronze, Silver o Gold</td>
+<td style="text-align: right;"><code>0</code></td>
+</tr>
+<tr>
+<td>Existe al menos un fallo o una omisión en esas capas</td>
+<td style="text-align: right;"><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<p>La sincronización SharePoint se informa aparte. En la implementación actual,
+un fallo al descargar al inicio o al subir al final se registra en el log, pero
+no se agrega a <code>any_incomplete</code>; por ello puede existir un fallo de SharePoint
+con código de salida <code>0</code>. Para automatización o CI se debe revisar también
+<code>pipeline_*.log</code> y <code>09_logs/ingestion/sharepoint.log</code>.</p>
+<h2 id="2-sincronizacion-con-sharepoint">2. Sincronización con SharePoint<a class="headerlink" href="#2-sincronizacion-con-sharepoint" title="Permanent link">&para;</a></h2>
+<p><code>00_sources/scripts/02_sharepoint/sync_sharepoint.py</code> implementa la
+sincronización bidireccional. El pipeline la importa dinámicamente y le pasa la
+raíz del proyecto y el entorno seleccionado.</p>
+<h3 id="descarga-previa">Descarga previa<a class="headerlink" href="#descarga-previa" title="Permanent link">&para;</a></h3>
+<p>Antes de Bronze, <code>sync_folder_structure()</code> compara las carpetas locales con
+las carpetas descendientes del sitio SharePoint y crea las que faltan, salvo
+carpetas excluidas como <code>.git</code>, <code>.venv</code>, <code>__pycache__</code> y <code>.pytest_cache</code>.</p>
+<p>Después, <code>download_bronze_incremental()</code> inspecciona la raíz remota
+<code>01_bronze/data</code>. Para cada archivo compara el tamaño y la fecha de
+modificación remota con el archivo local:</p>
+<ul>
+<li>si no existe localmente, se descarga;</li>
+<li>si cambió el tamaño, se descarga;</li>
+<li>si la fecha remota es posterior, se descarga;</li>
+<li>si no cambió ninguna de esas propiedades, se omite.</li>
+</ul>
+<p>Los errores de archivos individuales se acumulan en el resumen de descarga;
+un error general se captura en <code>pipeline.py</code> y permite continuar con el estado
+local disponible.</p>
+<h3 id="subida-posterior">Subida posterior<a class="headerlink" href="#subida-posterior" title="Permanent link">&para;</a></h3>
+<p>La subida usa el índice remoto y vuelve a comparar tamaño y fecha. Un archivo
+se sube si no existe en SharePoint, si cambió su tamaño o si su fecha local es
+posterior a la remota. Los archivos sin cambios se omiten. Las fallas por
+archivo se registran y se incluyen en el reporte de SharePoint.</p>
+<p>La primera rutina respalda código y configuración; la segunda respalda datos
+Bronze, Parquet de Silver y Gold y logs. Las credenciales y llaves privadas se
+excluyen mediante <code>_is_excluded_relative_path()</code>.</p>
+<h3 id="entornos-y-autenticacion">Entornos y autenticación<a class="headerlink" href="#entornos-y-autenticacion" title="Permanent link">&para;</a></h3>
+<p><code>PIPELINE_ENV</code> acepta <code>test</code> o <code>prod</code>; también se puede usar <code>--env prod</code>. La
+prioridad es argumento, variable de entorno y finalmente <code>test</code>. La clase
+<code>SharePointSync</code> carga <code>.env</code> y el archivo indicado por
+<code>TEST_CREDENTIALS_FILE</code> o <code>PROD_CREDENTIALS_FILE</code>; por defecto usa
+<code>00_sources/scripts/02_sharepoint/credenciales.env</code>.</p>
+<p>La autenticación se realiza con MSAL y certificado. Para producción se debe
+configurar explícitamente <code>PROD_SP_SITE_PATH</code>; opcionalmente se pueden definir
+<code>PROD_SP_BASE_URL</code>, <code>PROD_CLIENT_ID</code>, <code>PROD_TENANT_ID</code>,
+<code>PROD_CERT_THUMBPRINT</code> y <code>PROD_CERT_KEY_PATH</code>. La llave privada predeterminada
+es <code>00_sources/scripts/02_sharepoint/key.pem</code>.</p>
+<h2 id="3-que-hacer-ante-fallos">3. Qué hacer ante fallos<a class="headerlink" href="#3-que-hacer-ante-fallos" title="Permanent link">&para;</a></h2>
+<h3 id="ubicacion-de-logs">Ubicación de logs<a class="headerlink" href="#ubicacion-de-logs" title="Permanent link">&para;</a></h3>
+<p>El log maestro se crea con <code>utils/logger.py</code>, usando la configuración de
+<code>07_config/logging_config.yaml</code>, en:</p>
+<div class="highlight"><pre><span></span><code>09_logs/pipeline/pipeline_DD_MM_YYYY.log
+</code></pre></div>
+<p>Las rutas siguientes son las rutas convencionales calculadas por
+<code>_expected_log_file()</code> en la fecha de ejecución. Si el archivo no existe, el
+error puede corresponder a un fallo antes de que el script hijo inicializara
+su logger.</p>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Ruta esperada del log específico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APIs</td>
+<td><code>09_logs/00_sources/&lt;subfuente&gt;/&lt;nombre&gt;_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>Bronze, <code>01_costo_ventas_bronce.py</code></td>
+<td><code>09_logs/01_bronze/data/05_ventas/04_costo_ventas_preliminar/costo_ventas_preliminar_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>Bronze, <code>get_data.py</code></td>
+<td><code>09_logs/01_bronze/get_data/get_data_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>Bronze, <code>validate_schema.py</code></td>
+<td><code>09_logs/01_bronze/validate_schema/validate_schema_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>Silver</td>
+<td><code>09_logs/02_silver/&lt;nombre_del_script&gt;/&lt;clean_fuente&gt;_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>Gold</td>
+<td><code>09_logs/03_gold/&lt;nombre_del_script&gt;/&lt;nombre_del_script&gt;_DD_MM_YYYY.log</code></td>
+</tr>
+<tr>
+<td>SharePoint</td>
+<td><code>09_logs/ingestion/sharepoint.log</code></td>
+</tr>
+</tbody>
+</table>
+<p>Para APIs, los nombres concretos esperados son <code>vigigas_api</code>,
+<code>mb_tx_propane_api</code> y <code>trm_api</code>. Para Silver, por ejemplo,
+<code>1_1_inventario_cilindros_clean.py</code> corresponde a
+<code>09_logs/02_silver/1_1_inventario_cilindros_clean/clean_inventario_cilindros_DD_MM_YYYY.log</code>.</p>
+<h3 id="mensajes-del-log-maestro">Mensajes del log maestro<a class="headerlink" href="#mensajes-del-log-maestro" title="Permanent link">&para;</a></h3>
+<p>En <code>pipeline_*.log</code> se deben buscar:</p>
+<table>
+<thead>
+<tr>
+<th>Marca</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>✓ script.py OK</code></td>
+<td>El proceso hijo terminó con código <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>✗ script.py</code></td>
+<td>El archivo no existe, agotó el tiempo, no pudo lanzarse o terminó con código distinto de <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>↷ script.py OMITIDO</code></td>
+<td>No se ejecutó por detención de Bronze, bloqueo de Gold o bloqueo de la capa completa.</td>
+</tr>
+<tr>
+<td><code>⛔</code></td>
+<td>Condición crítica: detención de Bronze o Gold bloqueado.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="diagnostico-por-capa">Diagnóstico por capa<a class="headerlink" href="#diagnostico-por-capa" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Capa</th>
+<th>Comportamiento ante fallo</th>
+<th>Causas típicas para revisar</th>
+<th>Acción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APIs</td>
+<td>Continúa con las demás fuentes</td>
+<td>Credenciales, timeout, respuesta inválida o servicio externo no disponible</td>
+<td>Abrir el log específico y ejecutar el script API individual.</td>
+</tr>
+<tr>
+<td>Bronze</td>
+<td>Detiene Silver y Gold</td>
+<td>Archivo no encontrado, patrón o ruta incorrectos, encoding, hoja Excel, error de lectura o contrato inválido</td>
+<td>Corregir la entrada/configuración y reejecutar Bronze; después revisar <code>audit_log.csv</code> y el log del script.</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>Continúa, pero puede bloquear Gold</td>
+<td>Columnas requeridas ausentes en <code>07_config/mappings.yaml</code>, tipo inválido, clave primaria o mínimo de filas</td>
+<td>Revisar el contrato y el Parquet Bronze; ejecutar el <code>clean_*.py</code> afectado.</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>Continúa con procesos no dependientes</td>
+<td>Entrada Silver ausente, error de transformación o dependencia fallida/omitida</td>
+<td>Revisar el log del script y el mensaje <code>Dependencia(s) no disponible(s)</code>; ejecutar primero la dependencia fallida.</td>
+</tr>
+<tr>
+<td>SharePoint</td>
+<td>Continúa con archivos locales o termina la subida con errores por archivo</td>
+<td>MSAL, certificado, ruta de sitio, credenciales, red o permisos</td>
+<td>Revisar <code>09_logs/ingestion/sharepoint.log</code> y la configuración del entorno.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reejecucion-individual">Reejecución individual<a class="headerlink" href="#reejecucion-individual" title="Permanent link">&para;</a></h3>
+<p>El pipeline no expone una opción para ejecutar una sola capa o fuente. Para
+reprocesar un script, ejecútelo directamente desde la raíz del proyecto con el
+mismo intérprete:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>00_sources/scripts/01_vigigas/vigigas_api_client.py
+python<span class="w"> </span>01_bronze/scripts/get_data.py
+python<span class="w"> </span>02_silver/scripts/1_1_inventario_cilindros_clean.py
+python<span class="w"> </span>03_gold/scripts/fact_ventas.py
+</code></pre></div>
+<p>Los argumentos específicos de cada script, si existen, se consultan en su
+propia ayuda (<code>python ruta/al/script.py --help</code>). No se deben ejecutar
+dependientes de Gold antes de corregir o regenerar sus dependencias.</p>
+<h3 id="fallos-de-sharepoint">Fallos de SharePoint<a class="headerlink" href="#fallos-de-sharepoint" title="Permanent link">&para;</a></h3>
+<p>Si falla la sincronización previa, el pipeline registra
+<code>Se continúa con los archivos locales existentes</code> y sigue hacia Bronze. Se
+deben comprobar <code>PIPELINE_ENV</code>, <code>TEST_SP_SITE_PATH</code> o <code>PROD_SP_SITE_PATH</code>,
+<code>*_TENANT_ID</code>, <code>*_CLIENT_ID</code>, <code>*_CERT_THUMBPRINT</code>, <code>*_CERT_KEY_PATH</code> y el
+archivo de credenciales correspondiente. Un certificado ausente o una llave
+privada inexistente impiden inicializar <code>SharePointSync</code>.</p>
+<p>Si falla solo la subida final, el reporte registra estado <code>FALLIDO</code> y se debe
+verificar qué archivos quedaron en <code>failed</code> en el log. Los datos locales y el
+resultado de las capas no se revierten. Como el código actual no incorpora ese
+fallo al código de salida, CI debe analizar también el reporte de SharePoint;
+este comportamiento queda pendiente de endurecer si se requiere que toda
+falla de publicación produzca código <code>1</code>.</p>
+<h3 id="interpretacion-para-automatizacion">Interpretación para automatización<a class="headerlink" href="#interpretacion-para-automatizacion" title="Permanent link">&para;</a></h3>
+<p>El <code>REPORTE FINAL</code> muestra por capa el formato <code>OK/total</code>, los fallos y los
+omitidos. Código <code>0</code> significa que no hubo fallos ni omisiones en los scripts
+de las capas evaluadas; código <code>1</code> exige revisar esos detalles y sus logs. Un
+<code>NO EJECUTADO</code> o un <code>omitido</code> de Gold no es un éxito completo aunque algunos
+scripts Silver hayan terminado correctamente. Además, la automatización debe
+validar explícitamente el estado <code>REPORTE SHAREPOINT</code>, porque sus errores se
+registran por separado.</p>
+<p>Para ampliar el detalle de cada componente, consulte <a href="../01.Esquema/">Estructura y esquema de
+ejecución</a>, <a href="../02.apis/">APIs</a>, <a href="../02.Capa_bronce/">Capa Bronce</a>,
+<a href="../03.Capa_plata/">Capa Plata</a> y <a href="../04.Capa_oro/">Capa Oro</a>.</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 22:36:05 UTC">23 de septiembre de 2026</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
+  Última actualización: 25 de septiembre de 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
