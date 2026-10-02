@@ -2054,12 +2054,27 @@ forman parte del contrato de consumo del tablero.
 <li><strong>Pasos de transformación:</strong><ol>
 <li>Valida columnas con <code>_require_columns</code> y normaliza fechas, textos, códigos y valores.</li>
 <li>Cruza centros de costo con sus dimensiones y excluye agrupaciones <code>No aplica</code>, salvo conversión.</li>
-<li>Genera combinaciones de meses, centros y filas paramétricas.</li>
-<li>Calcula en cascada <code>extra_16</code>, <code>extra_17</code>, <code>extra_18</code>, <code>extra_117</code>, <code>extra_118</code>, <code>extra_122</code>, <code>extra_123</code> y <code>extra_124</code>.</li>
-<li>Calcula ingresos y porcentajes, escribe con <code>write_gold_parquet</code> y registra con <code>log_gold_summary</code>.</li>
+<li>Genera combinaciones de meses, centros y filas paramétricas, incluidas las de conversión.</li>
+<li>Calcula primero <code>EXTRA_16</code> sobre la cuenta <code>753008</code> y lo usa como base para la cascada <code>EXTRA_17</code>, <code>EXTRA_18</code>, <code>EXTRA_117</code>, <code>EXTRA_118</code>, <code>EXTRA_122</code>, <code>EXTRA_123</code> y <code>EXTRA_124</code>.</li>
+<li>Calcula ingresos, porcentajes y asigna los resultados a las filas <code>EXTRA_*</code> habilitadas por la dimensión; luego escribe con <code>write_gold_parquet</code> y registra con <code>log_gold_summary</code>.</li>
 </ol>
 </li>
-<li><strong>Reglas de negocio / validaciones particulares:</strong> solo analiza movimientos con <code>aplica_analisis_autoglp == "si"</code>; conversión tiene tratamiento especial; las divisiones por cero quedan nulas y la cascada respeta <code>16 -&gt; 17 -&gt; 18 -&gt; 117 -&gt; 118</code> y <code>122 -&gt; 123 -&gt; 124</code>.</li>
+<li>
+<p><strong>Reglas de negocio / validaciones particulares:</strong> solo analiza movimientos con <code>aplica_analisis_autoglp == "si"</code>; la cuenta <code>753008</code> reemplaza la fila parametrizada de <code>EXTRA_16</code>, por eso <code>EXTRA_17 = ingresos - EXTRA_16</code> y <code>EXTRA_18 = 1 - EXTRA_16 / ingresos</code>; la cascada respeta <code>16 -&gt; 17 -&gt; 18 -&gt; 117 -&gt; 118</code> y <code>122 -&gt; 123 -&gt; 124</code>. Para centros de costo de conversión, las filas <code>EXTRA_*</code> tienen tratamiento especial y <code>EXTRA_123</code> se calcula con la diferencia entre ingresos y gastos administrativos, mientras que las divisiones por cero quedan nulas.</p>
+</li>
+<li>
+<p><strong>Uso de cada código <code>EXTRA_*</code>:</strong></p>
+<ul>
+<li><code>EXTRA_16</code>: representa el costo base asociado a la cuenta <code>753008</code> y reemplaza la fila parametrizada tradicional; sirve como punto de partida para la utilidad bruta y el margen bruto.</li>
+<li><code>EXTRA_17</code>: es la utilidad bruta del centro de costo, calculada como <code>ingresos - EXTRA_16</code> para medir el resultado operativo antes de gastos administrativos.</li>
+<li><code>EXTRA_18</code>: es el margen bruto porcentual, calculado como <code>1 - EXTRA_16 / ingresos</code>; refleja la proporción del ingreso que queda después del costo base.</li>
+<li><code>EXTRA_117</code>: corresponde a la utilidad operacional o resultado ajustado luego de quitar gastos administrativos; se obtiene como <code>EXTRA_17 - (-gastos_admin)</code>.</li>
+<li><code>EXTRA_118</code>: es la razón de margen operacional asociada a <code>EXTRA_117</code>, calculada sobre el flujo de ingresos para esta dimensión.</li>
+<li><code>EXTRA_122</code>: recoge la asignación indirecta comercial y administrativa financiera del centro de costo (<code>asignación comercial autoglp</code>, <code>asignación personal administrativo transversal</code>, <code>asignación gastos financieros corporativos</code>) y se suma al resultado final en signo contrario según la convención del negocio.</li>
+<li><code>EXTRA_123</code>: es el resultado neto del ejercicio para la combinación mes-centro, calculado como <code>EXTRA_117 + EXTRA_122</code>; en centros de conversión se usa la diferencia <code>ingresos - gastos_admin</code>.</li>
+<li><code>EXTRA_124</code>: es el porcentaje neto asociado a <code>EXTRA_123</code> sobre ingresos, es decir, el margen neto de la operación.</li>
+</ul>
+</li>
 </ul>
 <h3 id="fact_almacenamiento_diariopy"><code>fact_almacenamiento_diario.py</code><a class="headerlink" href="#fact_almacenamiento_diariopy" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2182,7 +2197,7 @@ forman parte del contrato de consumo del tablero.
     <span class="md-icon" title="Última actualización">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="23 de septiembre de 2026 22:36:05 UTC">23 de septiembre de 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="25 de septiembre de 2026 14:30:33 UTC">25 de septiembre de 2026</span>
   </span>
 
     
@@ -2213,7 +2228,7 @@ forman parte del contrato de consumo del tablero.
   
     <div class="md-copyright__highlight">
       Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
-  Última actualización: 1 de octubre de 2026
+  Última actualización: 2 de octubre de 2026
     </div>
   
   
