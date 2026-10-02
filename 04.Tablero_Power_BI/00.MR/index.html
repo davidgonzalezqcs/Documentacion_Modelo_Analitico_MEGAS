@@ -2636,6 +2636,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#centro-costo-costo-producto-glp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Centro Costo Costo Producto GLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#centro-costo-costo-producto" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4965,6 +4976,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#centro-costo-costo-producto-glp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Centro Costo Costo Producto GLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#centro-costo-costo-producto" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -5496,6 +5518,10 @@
 <td style="text-align: left;"><strong>fact_saldos</strong></td>
 <td style="text-align: left;">Tabla de hechos con los saldos de tesorería por categoría, entidad y concepto (bancos, Ecopetrol, crédito), consolidada desde el Formato de Saldos, base de las medidas de liquidez de caja.</td>
 </tr>
+<tr>
+<td style="text-align: left;"><strong>dim_capacidad_kg</strong></td>
+<td style="text-align: left;">Dimensión con los valores de kg de capacidad de almacenamiento registrados en <em>dim_activos_vigigas</em> y <em>fact_activos_sui</em>.</td>
+</tr>
 </tbody>
 </table>
 <h3 id="matriz-de-relaciones-del-modelo">Matriz de Relaciones del Modelo<a class="headerlink" href="#matriz-de-relaciones-del-modelo" title="Permanent link">&para;</a></h3>
@@ -5858,7 +5884,7 @@
 <td style="text-align: left;">Segmenta las mediciones de telemetría por línea de negocio.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><strong>RELACIONES DE TRAZABILIDAD VIGIGAS</strong></td>
+<td style="text-align: left;"><strong>RELACIONES DE TRAZABILIDAD ACTIVOS</strong></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
@@ -5880,6 +5906,22 @@
 <td style="text-align: left;">Uno a Varios (<code>1:*</code>)</td>
 <td style="text-align: left;">Única (Origen a Destino)</td>
 <td style="text-align: left;">Vincula el histórico de estados y ubicaciones con el activo monitoreado por Vigigas.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>dim_capacidad_kg</strong></td>
+<td style="text-align: left;">dim_activos_vigigas</td>
+<td style="text-align: left;"><code>capacidad_kg</code></td>
+<td style="text-align: left;">Uno a Varios (<code>1:*</code>)</td>
+<td style="text-align: left;">Única (Origen a Destino)</td>
+<td style="text-align: left;">Segmenta los activos registrados en Vigigas por capacidad en kg.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>dim_capacidad_kg</strong></td>
+<td style="text-align: left;">fact_activos_sui</td>
+<td style="text-align: left;"><code>capacidad_kg</code></td>
+<td style="text-align: left;">Uno a Varios (<code>1:*</code>)</td>
+<td style="text-align: left;">Única (Origen a Destino)</td>
+<td style="text-align: left;">Segmenta el recuento de activos registrados en los inventarios del SUI por capacidad en kg.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>RELACIONES DE JERARQUÍA DEL ESTADO DE RESULTADOS</strong></td>
@@ -7251,15 +7293,20 @@
 <span class="c1">--CALCULATE(sum(fact_centro_costos[total]),fact_centro_costos[nombre_cuenta_nivel_1] = &quot;4 INGRESOS&quot;)</span>
 <span class="nf">CALCULATE</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="na">fact_analisis_autoglp[total_cop]</span><span class="p">),</span><span class="na">fact_analisis_autoglp[nombre_cuenta_nivel_1]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;4 INGRESOS&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h3 id="centro-costo-costo-producto-glp">📊 Centro Costo Costo Producto GLP<a class="headerlink" href="#centro-costo-costo-producto-glp" title="Permanent link">&para;</a></h3>
+<p><strong>Descripción:</strong> Costo total de producto GLP por centro de costo tomados de la cuenta contable <em>753008</em></p>
+<div class="highlight"><pre><span></span><code>Centro Costo Costo Producto GLP = 
+<span class="nf">CALCULATE</span><span class="p">(</span><span class="nf">sum</span><span class="p">(</span><span class="na">fact_analisis_autoglp[total_cop]</span><span class="p">),</span><span class="na">fact_analisis_autoglp[nivel_4]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;753008&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="centro-costo-costo-producto">📊 Centro Costo % Costo Producto<a class="headerlink" href="#centro-costo-costo-producto" title="Permanent link">&para;</a></h3>
-<p><strong>Descripción:</strong> Porcentaje que representa el Costo Estimado de los Kilos Vendidos frente a los Ingresos Netos de Auto GLP.</p>
+<p><strong>Descripción:</strong> Porcentaje que representa el Costo de los Kilos Vendidos frente a los Ingresos Netos de Auto GLP.</p>
 <div class="highlight"><pre><span></span><code>Centro Costo % Costo Producto = 
-<span class="nf">DIVIDE</span><span class="p">(</span><span class="na">[Costo Estimado Kilos Total Vendidos]</span><span class="p">,</span><span class="na">[Centro Costo Ingresos Netos Auto GLP]</span><span class="p">,</span><span class="nf">BLANK</span><span class="p">())</span>
+<span class="nf">DIVIDE</span><span class="p">(</span><span class="na">[Centro Costo Costo Producto GLP]</span><span class="p">,</span><span class="na">[Centro Costo Ingresos Netos Auto GLP]</span><span class="p">,</span><span class="nf">BLANK</span><span class="p">())</span>
 </code></pre></div>
 <h3 id="centro-costo-utilidad-bruta">📊 Centro costo Utilidad Bruta<a class="headerlink" href="#centro-costo-utilidad-bruta" title="Permanent link">&para;</a></h3>
-<p><strong>Descripción:</strong> Utilidad bruta de Auto GLP, calculada como los Ingresos Netos menos el Costo Estimado de los Kilos Vendidos.</p>
+<p><strong>Descripción:</strong> Utilidad bruta de Auto GLP, calculada como los Ingresos Netos menos el Costo de los Kilos Vendidos.</p>
 <div class="highlight"><pre><span></span><code>Centro costo Utilidad Bruta = 
-<span class="na">[Centro Costo Ingresos Netos Auto GLP]</span><span class="o">-</span><span class="na">[Costo Estimado Kilos Total Vendidos]</span>
+<span class="na">[Centro Costo Ingresos Netos Auto GLP]</span><span class="o">-</span><span class="na">[Centro Costo Costo Producto GLP]</span>
 </code></pre></div>
 <h3 id="centro-costo-utilidad-bruta_1">📊 Centro costo % Utilidad Bruta<a class="headerlink" href="#centro-costo-utilidad-bruta_1" title="Permanent link">&para;</a></h3>
 <p><strong>Descripción:</strong> Porcentaje de utilidad bruta de Auto GLP sobre los Ingresos Netos.</p>
@@ -7277,7 +7324,8 @@
 <span class="w">        </span><span class="s">&quot;5 GASTOS&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;6 COSTOS DE VENTAS Y OPERACIÓN&quot;</span><span class="p">,</span>
 <span class="w">        </span><span class="s">&quot;7 COSTOS DE PRODUCCIÓN&quot;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="na">fact_analisis_autoglp[Costo_producto_glp]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;NO&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
 <h3 id="centro-costo-utilidad-operacional">📊 Centro costo Utilidad Operacional<a class="headerlink" href="#centro-costo-utilidad-operacional" title="Permanent link">&para;</a></h3>
@@ -7298,7 +7346,7 @@
 <h3 id="centro-costo-resultado-neto">📊 Centro costo Resultado Neto<a class="headerlink" href="#centro-costo-resultado-neto" title="Permanent link">&para;</a></h3>
 <p><strong>Descripción:</strong> Resultado neto de Auto GLP, calculado como la Utilidad Operacional menos las asignaciones indirectas por prorrateo.</p>
 <div class="highlight"><pre><span></span><code>Centro costo Resultado Neto = 
-<span class="na">[Centro costo Utilidad Operacional]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="na">[Centro costo asignaciones indirectas]</span>
+<span class="na">[Centro costo Utilidad Operacional]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="na">[Centro costo asignaciones indirectas]</span>
 </code></pre></div>
 <h3 id="centro-costo-resultado-neto_1">📊 Centro costo % Resultado Neto<a class="headerlink" href="#centro-costo-resultado-neto_1" title="Permanent link">&para;</a></h3>
 <p><strong>Descripción:</strong> Porcentaje de resultado neto de Auto GLP sobre los Ingresos Netos.</p>
@@ -7316,9 +7364,9 @@
 <span class="nf">DIVIDE</span><span class="p">(</span><span class="na">[Centro costo Resultado Neto]</span><span class="p">,</span><span class="na">[Kilos Total Vendidos]</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="centro-costo-kilos-punto-equilibrio">📊 Centro costo Kilos punto equilibrio<a class="headerlink" href="#centro-costo-kilos-punto-equilibrio" title="Permanent link">&para;</a></h3>
-<p><strong>Descripción:</strong> Kilogramos que se deben vender para alcanzar el punto de equilibrio, calculados a partir de los gastos administrativos y operacionales, el costo estimado y las asignaciones indirectas, divididos entre el Margen Bruto.</p>
+<p><strong>Descripción:</strong> Kilogramos que se deben vender para alcanzar el punto de equilibrio, calculados a partir de los gastos administrativos y operacionales, el costo de producto y las asignaciones indirectas, divididos entre el Margen Bruto.</p>
 <div class="highlight"><pre><span></span><code>Centro costo Kilos punto equilibrio = 
-<span class="nf">DIVIDE</span><span class="p">(</span><span class="o">-</span><span class="na">[Centro Costo Gastos Adm y Op Auto GLP]</span><span class="o">+</span><span class="na">[Costo Estimado Kilos Total Vendidos]</span><span class="o">+</span><span class="na">[Centro costo asignaciones indirectas]</span><span class="p">,</span><span class="na">[Margen Bruto]</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+<span class="nf">DIVIDE</span><span class="p">(</span><span class="o">-</span><span class="na">[Centro Costo Gastos Adm y Op Auto GLP]</span><span class="o">+</span><span class="na">[Centro Costo Costo Producto GLP]</span><span class="o">-</span><span class="na">[Centro costo asignaciones indirectas]</span><span class="p">,</span><span class="na">[Margen Bruto]</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="centro-costo-brecha-kilos">📊 Centro costo Brecha Kilos<a class="headerlink" href="#centro-costo-brecha-kilos" title="Permanent link">&para;</a></h3>
 <p><strong>Descripción:</strong> Brecha en kilogramos entre el punto de equilibrio calculado y los Kilos Total Vendidos.</p>
@@ -7471,7 +7519,7 @@
   
     <div class="md-copyright__highlight">
       Copyright &copy; 2026 MEGAS ESP &nbsp;|&nbsp; Todos los derechos reservados. &nbsp;|&nbsp;
-  Última actualización: 1 de octubre de 2026
+  Última actualización: 2 de octubre de 2026
     </div>
   
   
